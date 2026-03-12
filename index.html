@@ -22,7 +22,6 @@ body{font-family:'DM Sans',sans-serif;background:#0B1120;color:#F1F5F9}
 input,select,button,textarea{font-family:'DM Sans',sans-serif;outline:none}
 input[type="date"]{color-scheme:dark}
 
-/* LOGIN */
 .login-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;padding:24px;gap:16px}
 .login-logo{font-size:60px;margin-bottom:8px}
 .login-title{font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:800;letter-spacing:4px;color:#F1F5F9}
@@ -59,9 +58,6 @@ input[type="date"]{color-scheme:dark}
 .stat-val.big{font-size:32px}
 .stat-val.sm{font-size:22px;color:#94A3B8}
 .stat-label{font-size:10px;color:#64748B;letter-spacing:1.5px;text-transform:uppercase}
-.mini-stat{background:#131C2E;border-radius:8px;padding:6px 12px;display:inline-flex;gap:6px;align-items:center}
-.mini-stat .v{font-size:14px;font-weight:700;font-family:monospace}
-.mini-stat .l{font-size:9px;color:#64748B;text-transform:uppercase;letter-spacing:1px}
 
 .big-btn{width:100%;padding:14px;border:none;border-radius:10px;color:#0B1120;font-size:15px;font-weight:800;letter-spacing:2px;cursor:pointer;flex-shrink:0}
 .big-btn:disabled{background:#334155!important;opacity:.5;cursor:default}
@@ -104,7 +100,7 @@ input[type="date"]{color-scheme:dark}
 .loading{color:#64748B;text-align:center;padding:40px;font-size:13px;letter-spacing:1px}
 
 .tbl-section{flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden;margin-top:8px}
-.tbl-wrap{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;border:1px solid #1E293B;border-radius:8px;overscroll-behavior:contain}
+.tbl-wrap{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;border:1px solid #1E293B;border-radius:8px;overscroll-behavior:contain;max-height:calc(100dvh - 300px)}
 .tbl{width:100%;border-collapse:collapse;min-width:700px;font-size:12px}
 .tbl thead{position:sticky;top:0;z-index:2}
 .tbl th{background:#131C2E;color:#64748B;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:8px 6px;text-align:left;border-bottom:1px solid #1E293B;white-space:nowrap}
@@ -125,7 +121,6 @@ input[type="date"]{color-scheme:dark}
 .export-btn{flex:1;padding:10px;border:1px solid #1E293B;border-radius:8px;background:#0B1120;color:#94A3B8;font-size:11px;font-weight:600;cursor:pointer;letter-spacing:.5px;text-align:center}
 .export-btn:active{background:#1E293B}
 
-/* USER BADGE */
 .user-badge{font-size:11px;color:#64748B;background:#131C2E;padding:4px 10px;border-radius:6px;border:1px solid #1E293B;cursor:pointer}
 
 @keyframes slideUp{from{transform:translateY(20px) translateX(-50%);opacity:0}to{transform:translateY(0) translateX(-50%);opacity:1}}
@@ -136,7 +131,6 @@ input[type="date"]{color-scheme:dark}
 </head>
 <body>
 
-<!-- LOGIN SCREEN -->
 <div id="loginScreen">
   <div class="login-wrap">
     <div class="login-logo">✈️</div>
@@ -151,7 +145,6 @@ input[type="date"]{color-scheme:dark}
   </div>
 </div>
 
-<!-- APP -->
 <div id="appScreen" class="hidden">
   <div class="app" id="app">
     <div id="homeView" class="view">
@@ -196,7 +189,6 @@ input[type="date"]{color-scheme:dark}
 <div id="toastContainer"></div>
 
 <script type="module">
-// ─── FIREBASE CONFIG ─────────────────────────────────────────────
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import { getFirestore, collection, doc, setDoc, deleteDoc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
@@ -215,10 +207,8 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// ─── ADMIN UID — pon aquí tu UID después del primer login ────────
 const ADMIN_UID = "y8658moBgnRtgOMtvMix1H9fLy22";
 
-// ─── CONFIG ─────────────────────────────────────────────────────
 const CATS = {
   Planeador: {
     icon: "✈", color: "#3B82F6",
@@ -249,7 +239,7 @@ const CATS = {
       { tipo:"Cessna", modelo:"206", mats:["CC-AQR"] },
       { tipo:"TBM", modelo:"850", mats:["N850GS"] },
       { tipo:"Aviat", modelo:"Husky", mats:["CC-DEK"] },
-      { tipo:"Piper", modelo:"PA18", mats:["CC-KWC","CC-KWI"] },
+      { tipo:"Piper", modelo:"PA18", mats:["CC-KWC","CC-KWI","CC-PRW","CC-KWQ"] },
       { tipo:"Aeronka", modelo:"Champion", mats:["CC-PFR"] },
     ],
     airports: ["SCLC","LOCAL","SCTB","SCPC","SCVI","SCHG","SCCH","SCIE","SCPF","SCPG","SCGF","SCBA","SCSN"],
@@ -264,7 +254,6 @@ const DEFAULT_SETTINGS = {
   Avion: { horasPrevias:366.4, ifrBase:0 }
 };
 
-// ─── STATE ──────────────────────────────────────────────────────
 let entries = [];
 let settings = { ...DEFAULT_SETTINGS };
 let activeCat = "Avion";
@@ -276,21 +265,15 @@ const fh = h => h == null ? "—" : Number(h).toFixed(1);
 const fd = d => { if(!d) return ""; const dt=new Date(d+"T12:00:00"); return dt.toLocaleDateString("es-CL",{day:"2-digit",month:"short",year:"2-digit"}); };
 const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2,6);
 
-// ─── AUTH ────────────────────────────────────────────────────────
 window.doLogin = async () => {
   const email = document.getElementById("loginEmail").value.trim();
   const pass = document.getElementById("loginPass").value;
   const btn = document.getElementById("loginBtn");
   const err = document.getElementById("loginErr");
   if(!email || !pass) { err.textContent = "Completa todos los campos"; return; }
-  btn.disabled = true;
-  err.textContent = "";
-  try {
-    await signInWithEmailAndPassword(auth, email, pass);
-  } catch(e) {
-    err.textContent = "Correo o contraseña incorrectos";
-    btn.disabled = false;
-  }
+  btn.disabled = true; err.textContent = "";
+  try { await signInWithEmailAndPassword(auth, email, pass); }
+  catch(e) { err.textContent = "Correo o contraseña incorrectos"; btn.disabled = false; }
 };
 
 window.doLogout = async () => {
@@ -305,8 +288,7 @@ onAuthStateChanged(auth, user => {
     document.getElementById("loginScreen").classList.add("hidden");
     document.getElementById("appScreen").classList.remove("hidden");
     document.getElementById("userBadge").textContent = user.email.split("@")[0] + " · Salir";
-    loadSettings();
-    subscribeEntries();
+    loadSettings(); subscribeEntries();
   } else {
     currentUser = null;
     document.getElementById("loginScreen").classList.remove("hidden");
@@ -316,33 +298,20 @@ onAuthStateChanged(auth, user => {
   }
 });
 
-// ─── FIRESTORE ───────────────────────────────────────────────────
-function userCol() {
-  return collection(db, "users", currentUser.uid, "flights");
-}
+function userCol() { return collection(db, "users", currentUser.uid, "flights"); }
 
 function subscribeEntries() {
   if(unsubscribeSnapshot) unsubscribeSnapshot();
   const q = query(userCol(), orderBy("fecha", "asc"));
   unsubscribeSnapshot = onSnapshot(q, snap => {
     entries = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-    loadSettings();
-    showHome();
-  }, err => {
-    console.error(err);
-    toast("Error al cargar vuelos");
-  });
+    loadSettings(); showHome();
+  }, err => { console.error(err); toast("Error al cargar vuelos"); });
 }
 
-async function saveFlight(entry) {
-  await setDoc(doc(db, "users", currentUser.uid, "flights", entry.id), entry);
-}
+async function saveFlight(entry) { await setDoc(doc(db, "users", currentUser.uid, "flights", entry.id), entry); }
+async function deleteFlight(id) { await deleteDoc(doc(db, "users", currentUser.uid, "flights", id)); }
 
-async function deleteFlight(id) {
-  await deleteDoc(doc(db, "users", currentUser.uid, "flights", id));
-}
-
-// ─── SETTINGS (localStorage por usuario) ─────────────────────────
 function settingsKey() { return `flb_settings_${currentUser?.uid}`; }
 function loadSettings() {
   const s = localStorage.getItem(settingsKey());
@@ -350,7 +319,6 @@ function loadSettings() {
 }
 function saveSettings_() { localStorage.setItem(settingsKey(), JSON.stringify(settings)); }
 
-// ─── UTILS ───────────────────────────────────────────────────────
 function catEntries(cat) {
   return entries.filter(e => e.category === cat).sort((a,b) => {
     if(a.fecha !== b.fecha) return a.fecha.localeCompare(b.fecha);
@@ -383,14 +351,12 @@ function getEntryTotals(cat, id) {
   return { periodo, totales, ifr };
 }
 
-// ─── TOAST ───────────────────────────────────────────────────────
 function toast(msg, color="#10B981") {
   const c = document.getElementById("toastContainer");
   c.innerHTML = `<div class="toast" style="background:${color}">${msg}</div>`;
   setTimeout(() => c.innerHTML = "", 2500);
 }
 
-// ─── NAV ─────────────────────────────────────────────────────────
 function renderNav() {
   document.getElementById("mainNav").innerHTML = Object.entries(CATS).map(([cat, cfg]) =>
     `<button class="nav-btn ${activeCat===cat?'active':''}" style="--cat-color:${cfg.color}" onclick="window._switchCat('${cat}')">
@@ -400,7 +366,6 @@ function renderNav() {
 }
 window._switchCat = cat => { activeCat = cat; showHome(); };
 
-// ─── HOME ─────────────────────────────────────────────────────────
 function showHome() {
   document.getElementById("homeView").classList.remove("hidden");
   document.getElementById("formView").classList.add("hidden");
@@ -426,7 +391,6 @@ function showHome() {
   renderNav();
 }
 
-// ─── TABLE ────────────────────────────────────────────────────────
 function buildTable(flights, cat) {
   const cfg = CATS[cat], hasIFR = cfg.hasIFR, cols = hasIFR ? 12 : 11;
   let html = `<div class="tbl-wrap"><table class="tbl"><thead><tr>
@@ -458,7 +422,6 @@ function buildTable(flights, cat) {
   return html + '</tbody></table></div>';
 }
 
-// ─── FORM ─────────────────────────────────────────────────────────
 window.formState = {};
 
 window.openForm = function(id) {
@@ -548,12 +511,9 @@ window._submitForm = async function() {
   try {
     await saveFlight(entry);
     const wasEditing = editingId;
-    editingId = null;
-    closeForm();
+    editingId = null; closeForm();
     toast(wasEditing?"Vuelo actualizado ✓":"Vuelo registrado ✓");
-  } catch(e) {
-    toast("Error al guardar", "#EF4444");
-  }
+  } catch(e) { toast("Error al guardar", "#EF4444"); }
 };
 
 window.closeForm = function() { editingId=null; showHome(); };
@@ -573,15 +533,12 @@ window._confirmDel = id => {
 };
 
 window._delEntry = async id => {
-  try {
-    await deleteFlight(id);
-    closeOverlay(); toast("Registro eliminado");
-  } catch(e) { toast("Error al eliminar","#EF4444"); }
+  try { await deleteFlight(id); closeOverlay(); toast("Registro eliminado"); }
+  catch(e) { toast("Error al eliminar","#EF4444"); }
 };
 
 window.closeOverlay = () => document.getElementById("overlayContainer").innerHTML = "";
 
-// ─── SETTINGS ────────────────────────────────────────────────────
 window.openSettings = function() {
   let tmp = JSON.parse(JSON.stringify(settings));
   let html = `<div class="overlay" onclick="closeOverlay()"><div class="settings-panel" onclick="event.stopPropagation()">
@@ -623,7 +580,6 @@ window.openSettings = function() {
   };
 };
 
-// ─── EXPORT ──────────────────────────────────────────────────────
 function buildSheetData(cat) {
   const cfg=CATS[cat], base=settings[cat], hasIFR=cfg.hasIFR;
   const rows=[["",cat==="Planeador"?"Bitacora Planeador":cat==="Helicoptero"?"Bitacora Helicoptero":"Bitacora Avion"],
@@ -672,7 +628,6 @@ window.copyAll = function() {
   navigator.clipboard.writeText(txt).then(()=>toast("Copiado"));
 };
 
-// ─── SERVICE WORKER ───────────────────────────────────────────────
 if("serviceWorker" in navigator) {
   window.addEventListener("load", () => navigator.serviceWorker.register("/Bitacora-Vuelo/sw.js"));
 }

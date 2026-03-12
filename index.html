@@ -437,9 +437,8 @@ window.openForm = function(id) {
   let mIdx = 0, matIdx = 0;
   if(entry) {
     mIdx = cfg.models.findIndex(m => m.tipo===entry.tipo && m.modelo===entry.modelo);
-    if(mIdx<0) mIdx=0;
-    matIdx = cfg.models[mIdx].mats.indexOf(entry.matricula);
-    if(matIdx<0) matIdx=0;
+    if(mIdx<0) mIdx=-1;
+    else { matIdx = cfg.models[mIdx].mats.indexOf(entry.matricula); if(matIdx<0) matIdx=0; }
   }
   window.formState = {
     modelIdx: mIdx, matIdx,
@@ -449,7 +448,10 @@ window.openForm = function(id) {
     tiempo: entry ? String(entry.tiempo) : "",
     notas: entry ? (entry.notas||"") : "",
     isIFR: entry ? (entry.isIFR||false) : false,
-    customDesde: "", customHacia: ""
+    customDesde: "", customHacia: "",
+    customTipo: entry && mIdx===-1 ? entry.tipo : "",
+    customModelo: entry && mIdx===-1 ? entry.modelo : "",
+    customMatricula: entry && mIdx===-1 ? entry.matricula : ""
   };
   if(entry && !cfg.airports.includes(entry.desde)) { window.formState.desde="_custom"; window.formState.customDesde=entry.desde; }
   if(entry && !cfg.airports.includes(entry.hacia)) { window.formState.hacia="_custom"; window.formState.customHacia=entry.hacia; }
@@ -458,17 +460,30 @@ window.openForm = function(id) {
 
 function renderForm() {
   const formState = window.formState;
-  const cfg = CATS[activeCat], m = cfg.models[formState.modelIdx], mats = m.mats;
+  const cfg = CATS[activeCat];
   const aopts = a => cfg.airports.map(ap=>`<option value="${ap}" ${a===ap?"selected":""}>${ap}</option>`).join("")+`<option value="_custom" ${a==="_custom"?"selected":""}>Otro...</option>`;
 
   let html = `
     <label class="lbl">Fecha</label>
     <input type="date" class="inp" value="${formState.fecha}" onchange="window.formState.fecha=this.value">
     <label class="lbl">Aeronave</label>
-    <div class="chips">${cfg.models.map((mod,i)=>`<button class="chip ${formState.modelIdx===i?'on':''}" style="--cat-color:${cfg.color}" onclick="window._setModel(${i})">${mod.tipo} ${mod.modelo}</button>`).join("")}</div>`;
+    <div class="chips">
+      ${cfg.models.map((mod,i)=>`<button class="chip ${formState.modelIdx===i?'on':''}" style="--cat-color:${cfg.color}" onclick="window._setModel(${i})">${mod.tipo} ${mod.modelo}</button>`).join("")}
+      <button class="chip ${formState.modelIdx===-1?'on':''}" style="--cat-color:${cfg.color}" onclick="window._setModel(-1)">Otro...</button>
+    </div>`;
 
-  if(mats.length>1) html += `<label class="lbl">Matrícula</label><div class="chips">${mats.map((mt,i)=>`<button class="chip ${formState.matIdx===i?'on':''}" style="--cat-color:${cfg.color}" onclick="window.formState.matIdx=${i};renderForm()">${mt}</button>`).join("")}</div>`;
-  else html += `<p class="mat-info">Matrícula: ${mats[0]}</p>`;
+  if(formState.modelIdx === -1) {
+    html += `<div class="row2" style="margin-top:8px">
+      <div><label class="lbl">Tipo</label><input class="inp" placeholder="Ej: Piper" value="${formState.customTipo||''}" oninput="window.formState.customTipo=this.value"></div>
+      <div><label class="lbl">Modelo</label><input class="inp" placeholder="Ej: PA28" value="${formState.customModelo||''}" oninput="window.formState.customModelo=this.value"></div>
+    </div>
+    <label class="lbl">Matrícula</label>
+    <input class="inp" placeholder="Ej: CC-XXX" value="${formState.customMatricula||''}" oninput="window.formState.customMatricula=this.value">`;
+  } else {
+    const m = cfg.models[formState.modelIdx], mats = m.mats;
+    if(mats.length>1) html += `<label class="lbl">Matrícula</label><div class="chips">${mats.map((mt,i)=>`<button class="chip ${formState.matIdx===i?'on':''}" style="--cat-color:${cfg.color}" onclick="window.formState.matIdx=${i};renderForm()">${mt}</button>`).join("")}</div>`;
+    else html += `<p class="mat-info">Matrícula: ${mats[0]}</p>`;
+  }
 
   html += `<div class="row2">
     <div><label class="lbl">${cfg.labels.desde}</label>
@@ -498,10 +513,13 @@ window._submitForm = async function() {
   const fs = window.formState;
   const t = parseFloat(fs.tiempo);
   if(!t||t<=0) return;
-  const cfg = CATS[activeCat], m = cfg.models[fs.modelIdx];
+  const cfg = CATS[activeCat];
+  const m = fs.modelIdx === -1 ? null : cfg.models[fs.modelIdx];
   const entry = {
-    category: activeCat, tipo: m.tipo, modelo: m.modelo,
-    matricula: m.mats[fs.matIdx]||m.mats[0]||"",
+    category: activeCat,
+    tipo: m ? m.tipo : (fs.customTipo||'').toUpperCase(),
+    modelo: m ? m.modelo : (fs.customModelo||''),
+    matricula: m ? (m.mats[fs.matIdx]||m.mats[0]||"") : (fs.customMatricula||'').toUpperCase(),
     fecha: fs.fecha,
     desde: fs.desde==="_custom"?fs.customDesde.toUpperCase():fs.desde,
     hacia: fs.hacia==="_custom"?fs.customHacia.toUpperCase():fs.hacia,

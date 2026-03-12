@@ -9,21 +9,12 @@
   <!-- Fondo redondeado -->
   <rect width="512" height="512" rx="100" ry="100" fill="url(#bg)"/>
 
-  <!-- Línea azul superior -->
-  <rect x="60" y="48" width="392" height="20" rx="10" fill="#3B82F6"/>
-
-  <!-- Avión -->
-  <text x="256" y="295" font-size="220" text-anchor="middle" dominant-baseline="middle" font-family="serif">✈</text>
-
-  <!-- Color azul sobre el avión -->
-  <text x="256" y="295" font-size="220" text-anchor="middle" dominant-baseline="middle" font-family="serif" fill="#60A5FA">✈</text>
+  <!-- Avión centrado -->
+  <text x="256" y="240" font-size="240" text-anchor="middle" dominant-baseline="middle" font-family="serif" fill="#60A5FA">✈</text>
 
   <!-- Texto BITÁCORA -->
-  <text x="256" y="400" font-size="56" font-weight="bold" text-anchor="middle" font-family="Arial Narrow, Arial, sans-serif" fill="#F1F5F9" letter-spacing="6">BITÁCORA</text>
+  <text x="256" y="390" font-size="56" font-weight="bold" text-anchor="middle" font-family="Arial Narrow, Arial, sans-serif" fill="#F1F5F9" letter-spacing="6">BITÁCORA</text>
 
   <!-- Texto DE VUELO -->
-  <text x="256" y="455" font-size="36" text-anchor="middle" font-family="Arial, sans-serif" fill="#3B82F6" letter-spacing="4">DE VUELO</text>
-
-  <!-- Línea azul inferior -->
-  <rect x="60" y="480" width="392" height="12" rx="6" fill="#3B82F6" opacity="0.5"/>
+  <text x="256" y="448" font-size="36" text-anchor="middle" font-family="Arial, sans-serif" fill="#3B82F6" letter-spacing="4">DE VUELO</text>
 </svg>

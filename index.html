@@ -460,6 +460,7 @@ function buildTable(flights, cat) {
 
 // ─── FORM ─────────────────────────────────────────────────────────
 let formState = {};
+window.formState = formState;
 
 window.openForm = function(id) {
   editingId = id || null;
@@ -499,30 +500,30 @@ function renderForm() {
 
   let html = `
     <label class="lbl">Fecha</label>
-    <input type="date" class="inp" value="${formState.fecha}" onchange="formState.fecha=this.value">
+    <input type="date" class="inp" value="${formState.fecha}" onchange="window.formState.fecha=this.value">
     <label class="lbl">Aeronave</label>
     <div class="chips">${cfg.models.map((mod,i)=>`<button class="chip ${formState.modelIdx===i?'on':''}" style="--cat-color:${cfg.color}" onclick="window._setModel(${i})">${mod.tipo} ${mod.modelo}</button>`).join("")}</div>`;
 
-  if(mats.length>1) html += `<label class="lbl">Matrícula</label><div class="chips">${mats.map((mt,i)=>`<button class="chip ${formState.matIdx===i?'on':''}" style="--cat-color:${cfg.color}" onclick="formState.matIdx=${i};renderForm()">${mt}</button>`).join("")}</div>`;
+  if(mats.length>1) html += `<label class="lbl">Matrícula</label><div class="chips">${mats.map((mt,i)=>`<button class="chip ${formState.matIdx===i?'on':''}" style="--cat-color:${cfg.color}" onclick="window.formState.matIdx=${i};renderForm()">${mt}</button>`).join("")}</div>`;
   else html += `<p class="mat-info">Matrícula: ${mats[0]}</p>`;
 
   html += `<div class="row2">
     <div><label class="lbl">${cfg.labels.desde}</label>
-    <select class="inp" onchange="formState.desde=this.value;renderForm()">${aopts(formState.desde)}</select>
-    ${formState.desde==="_custom"?`<input class="inp" style="margin-top:4px" placeholder="ICAO" value="${formState.customDesde}" oninput="formState.customDesde=this.value">`:""}
+    <select class="inp" onchange="window.formState.desde=this.value;renderForm()">${aopts(formState.desde)}</select>
+    ${formState.desde==="_custom"?`<input class="inp" style="margin-top:4px" placeholder="ICAO" value="${formState.customDesde}" oninput="window.formState.customDesde=this.value">`:""}
     </div>
     <div><label class="lbl">${cfg.labels.hacia}</label>
-    <select class="inp" onchange="formState.hacia=this.value;renderForm()">${aopts(formState.hacia)}</select>
-    ${formState.hacia==="_custom"?`<input class="inp" style="margin-top:4px" placeholder="ICAO" value="${formState.customHacia}" oninput="formState.customHacia=this.value">`:""}
+    <select class="inp" onchange="window.formState.hacia=this.value;renderForm()">${aopts(formState.hacia)}</select>
+    ${formState.hacia==="_custom"?`<input class="inp" style="margin-top:4px" placeholder="ICAO" value="${formState.customHacia}" oninput="window.formState.customHacia=this.value">`:""}
     </div></div>
     <label class="lbl">Tiempo de Vuelo (hrs)</label>
-    <input type="number" step="0.1" min="0" inputmode="decimal" class="inp inp-big" value="${formState.tiempo}" oninput="formState.tiempo=this.value" placeholder="ej: 1.5">`;
+    <input type="number" step="0.1" min="0" inputmode="decimal" class="inp inp-big" value="${formState.tiempo}" oninput="window.formState.tiempo=this.value;document.getElementById('saveBtn').disabled=!this.value" placeholder="ej: 1.5">`;
 
-  if(cfg.hasIFR) html += `<button class="chip full ${formState.isIFR?'ifr on':''}" onclick="formState.isIFR=!formState.isIFR;renderForm()">${formState.isIFR?"✓ Vuelo IFR":"Marcar como IFR"}</button>`;
+  if(cfg.hasIFR) html += `<button class="chip full ${formState.isIFR?'ifr on':''}" onclick="window.formState.isIFR=!window.formState.isIFR;renderForm()">${formState.isIFR?"✓ Vuelo IFR":"Marcar como IFR"}</button>`;
 
   html += `<label class="lbl">${cfg.labels.notas}</label>
-    <input class="inp" placeholder="Opcional" value="${formState.notas}" oninput="formState.notas=this.value">
-    <button class="big-btn" style="margin-top:16px;background:${cfg.color}" onclick="window._submitForm()" ${!formState.tiempo?"disabled":""}>${editingId?"ACTUALIZAR":"GUARDAR VUELO"}</button>`;
+    <input class="inp" placeholder="Opcional" value="${formState.notas}" oninput="window.formState.notas=this.value">
+    <button id="saveBtn" class="big-btn" style="margin-top:16px;background:${cfg.color}" onclick="window._submitForm()" ${!formState.tiempo?"disabled":""}>${editingId?"ACTUALIZAR":"GUARDAR VUELO"}</button>`;
 
   document.getElementById("formContent").innerHTML = html;
 }
@@ -531,16 +532,17 @@ window._setModel = i => { formState.modelIdx=i; formState.matIdx=0; renderForm()
 window.renderForm = renderForm;
 
 window._submitForm = async function() {
-  const t = parseFloat(formState.tiempo);
+  const fs = window.formState;
+  const t = parseFloat(fs.tiempo);
   if(!t||t<=0) return;
-  const cfg = CATS[activeCat], m = cfg.models[formState.modelIdx];
+  const cfg = CATS[activeCat], m = cfg.models[fs.modelIdx];
   const entry = {
     category: activeCat, tipo: m.tipo, modelo: m.modelo,
-    matricula: m.mats[formState.matIdx]||m.mats[0]||"",
-    fecha: formState.fecha,
-    desde: formState.desde==="_custom"?formState.customDesde.toUpperCase():formState.desde,
-    hacia: formState.hacia==="_custom"?formState.customHacia.toUpperCase():formState.hacia,
-    tiempo: t, notas: formState.notas, isIFR: formState.isIFR,
+    matricula: m.mats[fs.matIdx]||m.mats[0]||"",
+    fecha: fs.fecha,
+    desde: fs.desde==="_custom"?fs.customDesde.toUpperCase():fs.desde,
+    hacia: fs.hacia==="_custom"?fs.customHacia.toUpperCase():fs.hacia,
+    tiempo: t, notas: fs.notas, isIFR: fs.isIFR,
     id: editingId || uid()
   };
   try {

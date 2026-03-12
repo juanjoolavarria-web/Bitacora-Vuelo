@@ -459,8 +459,7 @@ function buildTable(flights, cat) {
 }
 
 // ─── FORM ─────────────────────────────────────────────────────────
-let formState = {};
-window.formState = formState;
+window.formState = {};
 
 window.openForm = function(id) {
   editingId = id || null;
@@ -479,7 +478,7 @@ window.openForm = function(id) {
     matIdx = cfg.models[mIdx].mats.indexOf(entry.matricula);
     if(matIdx<0) matIdx=0;
   }
-  formState = {
+  window.formState = {
     modelIdx: mIdx, matIdx,
     fecha: entry ? entry.fecha : new Date().toISOString().split("T")[0],
     desde: entry ? entry.desde : cfg.airports[0],
@@ -489,12 +488,13 @@ window.openForm = function(id) {
     isIFR: entry ? (entry.isIFR||false) : false,
     customDesde: "", customHacia: ""
   };
-  if(entry && !cfg.airports.includes(entry.desde)) { formState.desde="_custom"; formState.customDesde=entry.desde; }
-  if(entry && !cfg.airports.includes(entry.hacia)) { formState.hacia="_custom"; formState.customHacia=entry.hacia; }
+  if(entry && !cfg.airports.includes(entry.desde)) { window.formState.desde="_custom"; window.formState.customDesde=entry.desde; }
+  if(entry && !cfg.airports.includes(entry.hacia)) { window.formState.hacia="_custom"; window.formState.customHacia=entry.hacia; }
   renderForm();
 };
 
 function renderForm() {
+  const formState = window.formState;
   const cfg = CATS[activeCat], m = cfg.models[formState.modelIdx], mats = m.mats;
   const aopts = a => cfg.airports.map(ap=>`<option value="${ap}" ${a===ap?"selected":""}>${ap}</option>`).join("")+`<option value="_custom" ${a==="_custom"?"selected":""}>Otro...</option>`;
 

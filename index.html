@@ -22,26 +22,36 @@ body{font-family:'DM Sans',sans-serif;background:#0B1120;color:#F1F5F9}
 input,select,button,textarea{font-family:'DM Sans',sans-serif;outline:none}
 input[type="date"]{color-scheme:dark}
 
+/* LOGIN */
+.login-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;padding:24px;gap:16px}
+.login-logo{font-size:60px;margin-bottom:8px}
+.login-title{font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:800;letter-spacing:4px;color:#F1F5F9}
+.login-sub{font-size:12px;color:#64748B;letter-spacing:2px;margin-bottom:8px}
+.login-box{background:#131C2E;border-radius:12px;padding:24px;width:100%;max-width:360px;display:flex;flex-direction:column;gap:12px}
+.login-box input{width:100%;padding:12px;background:#0B1120;border:1px solid #1E293B;border-radius:8px;color:#F1F5F9;font-size:15px}
+.login-box input::placeholder{color:#475569}
+.login-err{color:#EF4444;font-size:12px;text-align:center;min-height:16px}
+.login-btn{width:100%;padding:14px;border:none;border-radius:10px;background:#3B82F6;color:#0B1120;font-size:15px;font-weight:800;letter-spacing:2px;cursor:pointer}
+.login-btn:disabled{opacity:.5;cursor:default}
+
 .app{max-width:720px;margin:0 auto;height:100vh;height:100dvh;display:flex;flex-direction:column;position:relative;overflow:hidden}
 .view{flex:1;overflow-y:auto;padding:16px 16px 0;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column}
 .view.form-view{padding-bottom:20px;display:block;overflow-y:auto}
 
-/* NAV */
 .nav{display:flex;justify-content:space-around;background:#0D1424;border-top:1px solid #1E293B;padding:6px 0 max(10px,env(safe-area-inset-bottom));flex-shrink:0;max-width:720px}
 .nav-btn{background:none;border:none;border-top:2px solid transparent;color:#475569;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 16px;cursor:pointer;transition:all .15s}
 .nav-btn.active{border-top-color:var(--cat-color);color:var(--cat-color)}
 .nav-btn .icon{font-size:20px}
 .nav-btn .label{font-size:10px;letter-spacing:1px}
 
-/* HEADER */
 .header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;padding-top:max(8px,env(safe-area-inset-top));flex-shrink:0}
 .title{font-size:22px;font-weight:800;letter-spacing:4px;font-family:'JetBrains Mono',monospace}
-.subtitle{font-size:12px;letter-spacing:2px;margin-top:2px;font-weight:700;color:var(--cat-color)}
+.subtitle{font-size:12px;letter-spacing:2px;margin-top:2px;font-weight:700}
+.header-btns{display:flex;gap:8px}
 .gear-btn{background:none;border:1px solid #1E293B;border-radius:8px;color:#64748B;font-size:18px;padding:6px 10px;cursor:pointer}
 .back-btn{background:none;border:none;color:#64748B;font-size:13px;cursor:pointer;padding:4px 0}
 .form-title{font-size:15px;font-weight:700;letter-spacing:1px;color:var(--cat-color)}
 
-/* STATS */
 .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;flex-shrink:0}
 .stat-card{background:#131C2E;border-radius:10px;padding:14px 12px;display:flex;flex-direction:column;gap:4px}
 .stat-card.big{grid-column:span 2}
@@ -53,24 +63,10 @@ input[type="date"]{color-scheme:dark}
 .mini-stat .v{font-size:14px;font-weight:700;font-family:monospace}
 .mini-stat .l{font-size:9px;color:#64748B;text-transform:uppercase;letter-spacing:1px}
 
-/* BUTTONS */
 .big-btn{width:100%;padding:14px;border:none;border-radius:10px;color:#0B1120;font-size:15px;font-weight:800;letter-spacing:2px;cursor:pointer;flex-shrink:0}
 .big-btn:disabled{background:#334155!important;opacity:.5;cursor:default}
-.link-btn{background:none;border:none;color:#3B82F6;font-size:12px;cursor:pointer}
 .small-btn{background:none;border:none;color:#64748B;font-size:11px;cursor:pointer;padding:2px 6px}
 
-/* CARDS */
-.card{background:#131C2E;border-radius:8px;padding:10px 12px;border-left:3px solid var(--cat-color);margin-bottom:6px;animation:slideUp .25s ease}
-.card-top{display:flex;justify-content:space-between;align-items:flex-start}
-.card-time{color:#F1F5F9;font-weight:700;font-size:15px}
-.card-date{color:#64748B;font-size:12px}
-.card-ifr{background:#818CF8;color:#0B1120;font-size:9px;padding:1px 5px;border-radius:3px;font-weight:700;margin-left:6px}
-.card-aircraft{color:#94A3B8;font-size:12px;margin:3px 0 0}
-.card-route{color:#64748B;font-size:11px;margin:2px 0 0}
-.card-totals{text-align:right;font-size:10px;color:#64748B;min-width:70px}
-.card-actions{display:flex;gap:8px;margin-top:6px;justify-content:flex-end}
-
-/* FORM */
 .lbl{display:block;color:#64748B;font-size:11px;letter-spacing:1px;text-transform:uppercase;margin:12px 0 4px}
 .inp{width:100%;padding:10px 12px;background:#131C2E;border:1px solid #1E293B;border-radius:8px;color:#F1F5F9;font-size:14px}
 .inp-big{font-size:22px;font-weight:700;text-align:center;letter-spacing:2px}
@@ -82,19 +78,16 @@ input[type="date"]{color-scheme:dark}
 .chip.full{width:100%;padding:10px;text-align:center;margin-top:4px}
 .mat-info{color:#64748B;font-size:13px;margin:2px 0 8px}
 
-/* SECTION */
 .section{margin-top:20px}
 .section-header{display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
 .section-title{color:#475569;font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
 
-/* OVERLAY */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;z-index:150;padding:16px;animation:fadeIn .15s ease}
 .modal{background:#131C2E;border-radius:12px;padding:20px;max-width:300px;width:100%}
 .modal p{color:#F1F5F9;font-size:15px;margin-bottom:16px}
 .modal-btns{display:flex;gap:10px}
 .modal-btn{flex:1;padding:10px;border:none;border-radius:8px;color:#F1F5F9;font-weight:700;font-size:13px;cursor:pointer}
 
-/* SETTINGS */
 .settings-panel{background:#131C2E;border-radius:16px;padding:20px;max-width:420px;width:100%;max-height:85vh;overflow-y:auto}
 .settings-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
 .settings-head h3{color:#F1F5F9;font-size:16px}
@@ -105,15 +98,12 @@ input[type="date"]{color-scheme:dark}
 .settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .settings-footer{margin-top:10px;display:flex;justify-content:space-between;align-items:center}
 .settings-footer span{color:#475569;font-size:10px}
-.reset-row{display:flex;gap:4px}
 
-/* TOAST */
 .toast{position:fixed;top:16px;left:50%;transform:translateX(-50%);background:#10B981;color:#0B1120;padding:10px 20px;border-radius:10px;font-weight:700;font-size:13px;z-index:200;animation:slideUp .3s ease;letter-spacing:.5px;white-space:nowrap}
 .empty{color:#64748B;text-align:center;padding:40px}
+.loading{color:#64748B;text-align:center;padding:40px;font-size:13px;letter-spacing:1px}
 
-/* TABLE */
 .tbl-section{flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden;margin-top:8px}
-.tbl-section #recentList,.tbl-section #logList{flex:1;min-height:0;display:flex;flex-direction:column}
 .tbl-wrap{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;border:1px solid #1E293B;border-radius:8px;overscroll-behavior:contain}
 .tbl{width:100%;border-collapse:collapse;min-width:700px;font-size:12px}
 .tbl thead{position:sticky;top:0;z-index:2}
@@ -131,76 +121,103 @@ input[type="date"]{color-scheme:dark}
 .tbl tr.renewal-row td{background:#1a1a0a;border-top:2px solid #F59E0B;border-bottom:2px solid #F59E0B}
 .tbl .renewal-badge{background:#F59E0B;color:#0B1120;font-size:10px;padding:3px 10px;border-radius:4px;font-weight:800;letter-spacing:1.5px}
 
-/* EXPORT ROW */
 .export-row{display:flex;gap:8px;margin-top:12px;margin-bottom:8px;flex-shrink:0}
 .export-btn{flex:1;padding:10px;border:1px solid #1E293B;border-radius:8px;background:#0B1120;color:#94A3B8;font-size:11px;font-weight:600;cursor:pointer;letter-spacing:.5px;text-align:center}
 .export-btn:active{background:#1E293B}
 
-@keyframes slideUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+/* USER BADGE */
+.user-badge{font-size:11px;color:#64748B;background:#131C2E;padding:4px 10px;border-radius:6px;border:1px solid #1E293B;cursor:pointer}
+
+@keyframes slideUp{from{transform:translateY(20px) translateX(-50%);opacity:0}to{transform:translateY(0) translateX(-50%);opacity:1}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 .hidden{display:none!important}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 </head>
 <body>
-<div class="app" id="app">
-  <!-- HOME -->
-  <div id="homeView" class="view">
-    <div class="header">
-      <div>
-        <h1 class="title">BITÁCORA</h1>
-        <p class="subtitle" id="homeSubtitle"></p>
-      </div>
-      <button class="gear-btn" onclick="openSettings()">⚙</button>
-    </div>
-    <div class="stats-grid" id="homeStats"></div>
-    <button class="big-btn" id="newFlightBtn" onclick="openForm()">+ REGISTRAR VUELO</button>
-    <div class="export-row" id="homeExport">
-      <button class="export-btn" onclick="exportExcel()">📊 Exportar Excel</button>
-      <button class="export-btn" onclick="exportExcelAll()">📑 Excel Completo</button>
-      <button class="export-btn" onclick="copyAll()">📋 Copiar</button>
-    </div>
-    <div class="section tbl-section" id="recentSection">
-      <div class="section-header">
-        <h3 class="section-title">Vuelos</h3>
-      </div>
-      <div id="recentList"></div>
+
+<!-- LOGIN SCREEN -->
+<div id="loginScreen">
+  <div class="login-wrap">
+    <div class="login-logo">✈️</div>
+    <div class="login-title">BITÁCORA</div>
+    <div class="login-sub">DE VUELO</div>
+    <div class="login-box">
+      <input type="email" id="loginEmail" placeholder="Correo electrónico" autocomplete="email">
+      <input type="password" id="loginPass" placeholder="Contraseña" autocomplete="current-password">
+      <div class="login-err" id="loginErr"></div>
+      <button class="login-btn" id="loginBtn" onclick="doLogin()">INGRESAR</button>
     </div>
   </div>
-
-  <!-- FORM -->
-  <div id="formView" class="view form-view hidden">
-    <div class="header" style="margin-bottom:8px">
-      <button class="back-btn" onclick="closeForm()">← Volver</button>
-      <h2 class="form-title" id="formTitle"></h2>
-    </div>
-    <div id="formContent"></div>
-  </div>
-
-  <!-- LOG -->
-  <div id="logView" class="view hidden">
-    <div class="header" style="margin-bottom:4px">
-      <button class="back-btn" onclick="showHome()">← Inicio</button>
-      <h2 class="form-title" id="logTitle"></h2>
-    </div>
-    <div id="logStats" style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap"></div>
-    <div class="export-row">
-      <button class="export-btn" onclick="exportExcel()">📊 Exportar Excel</button>
-      <button class="export-btn" onclick="exportExcelAll()">📑 Excel Completo</button>
-      <button class="export-btn" onclick="copyAll()">📋 Copiar</button>
-    </div>
-    <div id="logList"></div>
-  </div>
-
-  <!-- NAV -->
-  <nav class="nav" id="mainNav"></nav>
 </div>
 
-<!-- OVERLAY CONTAINER -->
+<!-- APP -->
+<div id="appScreen" class="hidden">
+  <div class="app" id="app">
+    <div id="homeView" class="view">
+      <div class="header">
+        <div>
+          <h1 class="title">BITÁCORA</h1>
+          <p class="subtitle" id="homeSubtitle"></p>
+        </div>
+        <div class="header-btns">
+          <span class="user-badge" id="userBadge" onclick="doLogout()">Salir</span>
+          <button class="gear-btn" onclick="openSettings()">⚙</button>
+        </div>
+      </div>
+      <div class="stats-grid" id="homeStats"></div>
+      <button class="big-btn" id="newFlightBtn" onclick="openForm()">+ REGISTRAR VUELO</button>
+      <div class="export-row">
+        <button class="export-btn" onclick="exportExcel()">📊 Excel</button>
+        <button class="export-btn" onclick="exportExcelAll()">📑 Completo</button>
+        <button class="export-btn" onclick="copyAll()">📋 Copiar</button>
+      </div>
+      <div class="section tbl-section" id="recentSection">
+        <div class="section-header">
+          <h3 class="section-title">Vuelos</h3>
+        </div>
+        <div id="recentList"><div class="loading">Cargando vuelos...</div></div>
+      </div>
+    </div>
+
+    <div id="formView" class="view form-view hidden">
+      <div class="header" style="margin-bottom:8px">
+        <button class="back-btn" onclick="closeForm()">← Volver</button>
+        <h2 class="form-title" id="formTitle"></h2>
+      </div>
+      <div id="formContent"></div>
+    </div>
+
+    <nav class="nav" id="mainNav"></nav>
+  </div>
+</div>
+
 <div id="overlayContainer"></div>
 <div id="toastContainer"></div>
 
-<script>
+<script type="module">
+// ─── FIREBASE CONFIG ─────────────────────────────────────────────
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { getFirestore, collection, doc, setDoc, deleteDoc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyB69mOwNl1O_lcFZWbTOMM7lZAlfQzTfXg",
+  authDomain: "bitacora-vuelos.firebaseapp.com",
+  projectId: "bitacora-vuelos",
+  storageBucket: "bitacora-vuelos.firebasestorage.app",
+  messagingSenderId: "178726391443",
+  appId: "1:178726391443:web:b7fc81484b61927e258766",
+  measurementId: "G-9SC35NVNKT"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+// ─── ADMIN UID — pon aquí tu UID después del primer login ────────
+const ADMIN_UID = ""; // lo llenas después
+
 // ─── CONFIG ─────────────────────────────────────────────────────
 const CATS = {
   Planeador: {
@@ -247,31 +264,93 @@ const DEFAULT_SETTINGS = {
   Avion: { horasPrevias:366.4, ifrBase:0 }
 };
 
-// ─── PRELOADED FLIGHTS FROM EXCEL ───────────────────────────────
-const PRELOADED = [{"id":"xl0000","category":"Planeador","tipo":"Planeador","modelo":"DG1000","matricula":"CC-ASZ","fecha":"2021-11-11","desde":"SCLC","hacia":"LOCAL","tiempo":0.3,"notas":"Inactividad","isIFR":false},{"id":"xl0001","category":"Planeador","tipo":"Planeador","modelo":"Duo Discus","matricula":"CC-AAW","fecha":"2021-12-28","desde":"SCLC","hacia":"LOCAL","tiempo":5.8,"notas":"Vuelo Cordillera","isIFR":false},{"id":"xl0002","category":"Planeador","tipo":"Planeador","modelo":"Duo Discus","matricula":"CC-AAW","fecha":"2022-01-04","desde":"SCLC","hacia":"LOCAL","tiempo":5.0,"notas":"Vuelo Cordillera","isIFR":false},{"id":"xl0003","category":"Planeador","tipo":"Planeador","modelo":"Blanik","matricula":"CC-AMW","fecha":"2022-06-18","desde":"SCLC","hacia":"LOCAL","tiempo":0.3,"notas":"Estandarizacion","isIFR":false},{"id":"xl0004","category":"Planeador","tipo":"Planeador","modelo":"Duo Discus","matricula":"CC-AAW","fecha":"2022-11-03","desde":"SCLC","hacia":"LOCAL","tiempo":0.7,"notas":"Local","isIFR":false},{"id":"xl0005","category":"Planeador","tipo":"Planeador","modelo":"Duo Discus","matricula":"CC-AAW","fecha":"2022-12-02","desde":"SCLC","hacia":"LOCAL","tiempo":5.0,"notas":"Vuelo Cordillera","isIFR":false},{"id":"xl0006","category":"Planeador","tipo":"Planeador","modelo":"Blanik","matricula":"CC-ASG","fecha":"2022-12-17","desde":"SCLC","hacia":"LOCAL","tiempo":0.4,"notas":"Inactividad","isIFR":false},{"id":"xl0007","category":"Planeador","tipo":"Planeador","modelo":"Duo Discus","matricula":"CC-AAW","fecha":"2023-01-28","desde":"SCLC","hacia":"LOCAL","tiempo":5.8,"notas":"Vuelo Cordillera","isIFR":false},{"id":"xl0008","category":"Planeador","tipo":"Planeador","modelo":"Blanik","matricula":"CC-AMW","fecha":"2023-06-01","desde":"SCLC","hacia":"LOCAL","tiempo":0.3,"notas":"Estandarizacion","isIFR":false},{"id":"xl0009","category":"Planeador","tipo":"Planeador","modelo":"Duo Discus","matricula":"CC-AAW","fecha":"2023-11-16","desde":"SCLC","hacia":"LOCAL","tiempo":4.6,"notas":"Vuelo Cordillera","isIFR":false},{"id":"xl0010","category":"Planeador","tipo":"Planeador","modelo":"Arcus","matricula":"CC-AIG","fecha":"2024-06-19","desde":"SCLC","hacia":"LOCAL","tiempo":3.0,"notas":"Estandarizacion","isIFR":false},{"id":"xl0011","category":"Planeador","tipo":"Planeador","modelo":"Pilatus","matricula":"CC-K14W","fecha":"2024-08-24","desde":"SCHC","hacia":"LOCAL","tiempo":0.3,"notas":"Chicureo","isIFR":false},{"id":"xl0012","category":"Planeador","tipo":"Planeador","modelo":"Blanik","matricula":"CC-AMW","fecha":"2024-11-23","desde":"SCLC","hacia":"LOCAL","tiempo":0.5,"notas":"Local","isIFR":false},{"id":"xl0013","category":"Planeador","tipo":"Planeador","modelo":"Duo Discus","matricula":"CC-AAW","fecha":"2024-12-11","desde":"SCLC","hacia":"LOCAL","tiempo":3.9,"notas":"Cordillera","isIFR":false},{"id":"xl0014","category":"Planeador","tipo":"Planeador","modelo":"Duo Discus","matricula":"CC-AAW","fecha":"2024-12-14","desde":"SCLC","hacia":"LOCAL","tiempo":0.3,"notas":"Cordillera","isIFR":false},{"id":"xl0015","category":"Planeador","tipo":"Planeador","modelo":"Duo Discus","matricula":"CC-AAW","fecha":"2024-12-16","desde":"SCLC","hacia":"LOCAL","tiempo":4.9,"notas":"Cordillera","isIFR":false},{"id":"xl0016","category":"Planeador","tipo":"Planeador","modelo":"Duo Discus","matricula":"CC-AAW","fecha":"2024-12-23","desde":"SCLC","hacia":"LOCAL","tiempo":4.1,"notas":"Cordillera","isIFR":false},{"id":"xl0017","category":"Planeador","tipo":"Planeador","modelo":"Duo Discus","matricula":"CC-AAW","fecha":"2025-01-23","desde":"SCLC","hacia":"LOCAL","tiempo":3.0,"notas":"Cordillera","isIFR":false},{"id":"xl0018","category":"Planeador","tipo":"Planeador","modelo":"Blanik","matricula":"CC-KWN","fecha":"2025-03-15","desde":"SCLC","hacia":"LOCAL","tiempo":0.9,"notas":"Local","isIFR":false},{"id":"xl0019","category":"Planeador","tipo":"Planeador","modelo":"Blanik","matricula":"CC-K11W","fecha":"2025-04-12","desde":"SCLC","hacia":"LOCAL","tiempo":0.3,"notas":"Local","isIFR":false},{"id":"xl0020","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2021-08-25","desde":"SCLC","hacia":"LOCAL","tiempo":0.5,"notas":"","isIFR":false},{"id":"xl0021","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2021-09-27","desde":"SCLC","hacia":"SCLC","tiempo":0.9,"notas":"Chequeo Ramon Castro","isIFR":false},{"id":"xl0022","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2021-09-29","desde":"SCLC","hacia":"SCLC","tiempo":1.3,"notas":"","isIFR":false},{"id":"xl0023","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2021-10-16","desde":"SCLC","hacia":"LOCAL","tiempo":0.7,"notas":"","isIFR":false},{"id":"xl0024","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2021-10-17","desde":"SCLC","hacia":"OLIVAR","tiempo":0.8,"notas":"JURGEN KUNZE","isIFR":false},{"id":"xl0025","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2021-10-17","desde":"OLIVAR","hacia":"SCLC","tiempo":0.7,"notas":"JURGEN KUNZE","isIFR":false},{"id":"xl0026","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2021-10-22","desde":"SCLC","hacia":"LOCAL","tiempo":0.4,"notas":"","isIFR":false},{"id":"xl0027","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2021-11-03","desde":"SCLC","hacia":"LOCAL","tiempo":0.3,"notas":"","isIFR":false},{"id":"xl0028","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2021-11-10","desde":"SCLC","hacia":"LOCAL","tiempo":0.6,"notas":"","isIFR":false},{"id":"xl0029","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2021-11-13","desde":"SCLC","hacia":"LOCAL","tiempo":0.5,"notas":"JURGEN KUNZE","isIFR":false},{"id":"xl0030","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2021-12-03","desde":"SCLC","hacia":"SCIF","tiempo":1.9,"notas":"CRISTIAN KULENTHAL","isIFR":false},{"id":"xl0031","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2022-01-05","desde":"SCLC","hacia":"LOCAL","tiempo":0.6,"notas":"","isIFR":false},{"id":"xl0032","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2022-01-18","desde":"SCLC","hacia":"LOCAL","tiempo":1.0,"notas":"","isIFR":false},{"id":"xl0033","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2022-03-24","desde":"SCLC","hacia":"SCHG-SCLC","tiempo":1.9,"notas":"ALMAHUE","isIFR":false},{"id":"xl0034","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2022-04-23","desde":"SCLC","hacia":"SCHG-SCLC","tiempo":1.5,"notas":"ALMAHUE","isIFR":false},{"id":"xl0035","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2022-04-28","desde":"SCLC","hacia":"LOCAL","tiempo":1.2,"notas":"","isIFR":false},{"id":"xl0036","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2022-05-08","desde":"SCHG","hacia":"SCLC","tiempo":0.8,"notas":"ALMAHUE","isIFR":false},{"id":"xl0037","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2022-05-21","desde":"SCLC","hacia":"LOCAL","tiempo":1.3,"notas":"","isIFR":false},{"id":"xl0038","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2022-05-29","desde":"SCLC","hacia":"LOCAL","tiempo":1.2,"notas":"","isIFR":false},{"id":"xl0039","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2022-06-25","desde":"SCLC","hacia":"LOCAL","tiempo":0.7,"notas":"Chequeo Ramon Castro","isIFR":false},{"id":"xl0040","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2022-07-17","desde":"SCLC","hacia":"SCLC","tiempo":1.8,"notas":"ALMAHUE","isIFR":false},{"id":"xl0041","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2022-08-04","desde":"SCLC","hacia":"LOCAL","tiempo":0.6,"notas":"","isIFR":false},{"id":"xl0042","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2022-08-07","desde":"SCLC","hacia":"LOCAL","tiempo":0.5,"notas":"","isIFR":false},{"id":"xl0043","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2022-08-10","desde":"SCLC","hacia":"LOCAL","tiempo":0.4,"notas":"","isIFR":false},{"id":"xl0044","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2022-08-27","desde":"SCLC","hacia":"LOCAL","tiempo":0.4,"notas":"Chequeo Ramon Castro","isIFR":false},{"id":"xl0045","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2022-09-05","desde":"SCLC","hacia":"LOCAL","tiempo":0.4,"notas":"","isIFR":false},{"id":"xl0046","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2022-10-02","desde":"SCLC","hacia":"LOCAL","tiempo":1.1,"notas":"","isIFR":false},{"id":"xl0047","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2022-10-19","desde":"SCLC","hacia":"LOCAL","tiempo":0.5,"notas":"","isIFR":false},{"id":"xl0048","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2022-10-20","desde":"SCLC","hacia":"LOCAL","tiempo":1.0,"notas":"Chequeo Ramon Castro","isIFR":false},{"id":"xl0049","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2022-10-21","desde":"SCLC","hacia":"LOCAL","tiempo":0.2,"notas":"","isIFR":false},{"id":"xl0050","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2022-11-05","desde":"SCLC","hacia":"LOCAL","tiempo":0.6,"notas":"","isIFR":false},{"id":"xl0051","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2022-11-06","desde":"SCLC","hacia":"LOCAL","tiempo":0.5,"notas":"","isIFR":false},{"id":"xl0052","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2022-11-11","desde":"SCLC","hacia":"LOCAL","tiempo":0.5,"notas":"","isIFR":false},{"id":"xl0053","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2022-11-20","desde":"SCLC","hacia":"PUMA LODGE","tiempo":0.7,"notas":"CRISTIAN KULENTHAL","isIFR":false},{"id":"xl0054","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2022-11-25","desde":"SCLC","hacia":"LOCAL","tiempo":0.5,"notas":"","isIFR":false},{"id":"xl0055","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2022-11-26","desde":"SCLC","hacia":"LOCAL","tiempo":0.4,"notas":"","isIFR":false},{"id":"xl0056","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2022-12-01","desde":"SCLC","hacia":"LOCAL","tiempo":0.7,"notas":"","isIFR":false},{"id":"xl0057","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2022-12-08","desde":"SCLC","hacia":"SCOV","tiempo":0.8,"notas":"","isIFR":false},{"id":"xl0058","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2022-12-08","desde":"SCOV","hacia":"SCLC","tiempo":0.3,"notas":"","isIFR":false},{"id":"xl0059","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2022-12-09","desde":"SCLC","hacia":"LOCAL","tiempo":1.3,"notas":"","isIFR":false},{"id":"xl0060","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2022-12-10","desde":"SCLC","hacia":"LOCAL","tiempo":1.2,"notas":"","isIFR":false},{"id":"xl0061","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2022-12-11","desde":"SCLC","hacia":"LOCAL","tiempo":0.5,"notas":"","isIFR":false},{"id":"xl0062","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2022-12-11","desde":"SCLC","hacia":"LOCAL","tiempo":1.2,"notas":"","isIFR":false},{"id":"xl0063","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2023-01-02","desde":"SCLC","hacia":"LOCAL","tiempo":0.6,"notas":"","isIFR":false},{"id":"xl0064","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2023-01-16","desde":"SCLC","hacia":"LOCAL","tiempo":0.4,"notas":"","isIFR":false},{"id":"xl0065","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2023-01-31","desde":"SCLC","hacia":"LOCAL","tiempo":0.5,"notas":"","isIFR":false},{"id":"xl0066","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2023-03-04","desde":"SCLC","hacia":"LOCAL","tiempo":0.2,"notas":"","isIFR":false},{"id":"xl0067","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2023-03-10","desde":"SCLC","hacia":"SCHG-LC","tiempo":2.1,"notas":"ALMAHUE","isIFR":false},{"id":"xl0068","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2023-03-21","desde":"SCLC","hacia":"SCLC","tiempo":0.8,"notas":"","isIFR":false},{"id":"xl0069","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2023-03-24","desde":"SCLC","hacia":"LOCAL","tiempo":0.4,"notas":"","isIFR":false},{"id":"xl0070","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2023-04-02","desde":"SCLC","hacia":"LOCAL","tiempo":0.5,"notas":"","isIFR":false},{"id":"xl0071","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2023-04-07","desde":"SCLC","hacia":"SCHG-LC","tiempo":1.8,"notas":"","isIFR":false},{"id":"xl0072","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2023-04-09","desde":"SCLC","hacia":"LOCAL","tiempo":0.9,"notas":"","isIFR":false},{"id":"xl0073","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2023-04-23","desde":"SCLC","hacia":"LOCAL","tiempo":0.8,"notas":"","isIFR":false},{"id":"xl0074","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2023-05-05","desde":"SCLC","hacia":"LOCAL","tiempo":0.3,"notas":"","isIFR":false},{"id":"xl0075","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2023-05-13","desde":"SCLC","hacia":"LOCAL","tiempo":4.5,"notas":"CASA MOLLE","isIFR":false},{"id":"xl0076","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2023-05-20","desde":"SCLC","hacia":"LOCAL","tiempo":1.3,"notas":"","isIFR":false},{"id":"xl0077","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2023-05-27","desde":"SCLC","hacia":"LOCAL","tiempo":1.5,"notas":"","isIFR":false},{"id":"xl0078","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2023-06-01","desde":"SCLC","hacia":"LOCAL","tiempo":0.5,"notas":"","isIFR":false},{"id":"xl0079","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2023-08-01","desde":"SCLC","hacia":"LOCAL","tiempo":0.4,"notas":"","isIFR":false},{"id":"xl0080","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2023-08-03","desde":"SCLC","hacia":"SCHG","tiempo":0.7,"notas":"ALMAHUE","isIFR":false},{"id":"xl0081","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2023-08-24","desde":"SCLC","hacia":"LOCAL","tiempo":0.3,"notas":"","isIFR":false},{"id":"xl0082","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2023-08-25","desde":"SCLC","hacia":"LOCAL","tiempo":0.5,"notas":"","isIFR":false},{"id":"xl0083","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2023-09-11","desde":"SCLC","hacia":"LOCAL","tiempo":0.7,"notas":"","isIFR":false},{"id":"xl0084","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2023-10-20","desde":"SCLC","hacia":"LOCAL","tiempo":0.4,"notas":"","isIFR":false},{"id":"xl0085","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2023-10-27","desde":"SCLC","hacia":"LOCAL","tiempo":2.5,"notas":"","isIFR":false},{"id":"xl0086","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2023-11-02","desde":"SCLC","hacia":"LOCAL","tiempo":0.4,"notas":"","isIFR":false},{"id":"xl0087","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2023-12-22","desde":"SCLC","hacia":"LOCAL","tiempo":0.5,"notas":"","isIFR":false},{"id":"xl0088","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2024-03-03","desde":"SCLC","hacia":"LOCAL","tiempo":2.9,"notas":"","isIFR":false},{"id":"xl0089","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2024-03-08","desde":"SCLC","hacia":"LOCAL","tiempo":0.6,"notas":"","isIFR":false},{"id":"xl0090","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2024-03-11","desde":"SCLC","hacia":"LOCAL","tiempo":0.7,"notas":"","isIFR":false},{"id":"xl0091","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2024-04-18","desde":"SCLC","hacia":"SCHG-LC","tiempo":1.8,"notas":"ALMAHUE","isIFR":false},{"id":"xl0092","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2024-05-15","desde":"SCLC","hacia":"LOCAL","tiempo":0.3,"notas":"","isIFR":false},{"id":"xl0093","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2024-05-27","desde":"SCLC","hacia":"LOCAL","tiempo":0.8,"notas":"","isIFR":false},{"id":"xl0094","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2024-06-01","desde":"SCLC","hacia":"LOCAL","tiempo":0.5,"notas":"","isIFR":false},{"id":"xl0095","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2024-06-14","desde":"SCLC","hacia":"LOCAL","tiempo":0.4,"notas":"","isIFR":false},{"id":"xl0096","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2024-06-18","desde":"SCLC","hacia":"LOCAL","tiempo":0.6,"notas":"Estandarización","isIFR":false},{"id":"xl0097","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2024-06-25","desde":"SCLC","hacia":"LOCAL","tiempo":0.6,"notas":"","isIFR":false},{"id":"xl0098","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2024-07-26","desde":"SCLC","hacia":"LOCAL","tiempo":0.6,"notas":"","isIFR":false},{"id":"xl0099","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2024-07-27","desde":"SCLC","hacia":"LOCAL","tiempo":0.8,"notas":"","isIFR":false},{"id":"xl0100","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2024-08-04","desde":"SCLC","hacia":"LOCAL","tiempo":0.7,"notas":"","isIFR":false},{"id":"xl0101","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2024-08-26","desde":"SCHG","hacia":"SCLC","tiempo":0.7,"notas":"Almahue","isIFR":false},{"id":"xl0102","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2024-10-21","desde":"SCLC","hacia":"LOCAL","tiempo":0.5,"notas":"Licencia Renovada","isIFR":false},{"id":"xl0103","category":"Helicoptero","tipo":"Helicoptero","modelo":"R44","matricula":"CC-CBV","fecha":"2024-12-15","desde":"SCLC","hacia":"LOCAL","tiempo":0.6,"notas":"","isIFR":false},{"id":"xl0104","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2024-09-11","desde":"SCLC","hacia":"SCHG","tiempo":0.8,"notas":"","isIFR":false},{"id":"xl0105","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2024-09-11","desde":"SCHG","hacia":"SCLC","tiempo":0.8,"notas":"","isIFR":false},{"id":"xl0106","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2024-09-27","desde":"SCLC","hacia":"SCTB-SCLC","tiempo":0.3,"notas":"","isIFR":false},{"id":"xl0107","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2024-10-14","desde":"SCLC","hacia":"SCHG-SCLC","tiempo":1.3,"notas":"","isIFR":false},{"id":"xl0108","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2024-11-24","desde":"SCHG","hacia":"SCLC","tiempo":0.7,"notas":"","isIFR":false},{"id":"xl0109","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2024-11-28","desde":"SCCH","hacia":"SCLC","tiempo":1.6,"notas":"","isIFR":false},{"id":"xl0110","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2024-12-17","desde":"SCLC","hacia":"SCHG-SCLC","tiempo":1.3,"notas":"","isIFR":false},{"id":"xl0111","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2024-12-26","desde":"SCLC","hacia":"SCCH","tiempo":1.7,"notas":"","isIFR":false},{"id":"xl0112","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2024-12-27","desde":"SCCH","hacia":"SCPC","tiempo":1.5,"notas":"","isIFR":false},{"id":"xl0113","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2024-12-29","desde":"SCPC","hacia":"SCPG-SCPC","tiempo":0.6,"notas":"","isIFR":false},{"id":"xl0114","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2024-12-31","desde":"SCPC","hacia":"SCVI-SCPC","tiempo":0.9,"notas":"","isIFR":false},{"id":"xl0115","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2025-01-03","desde":"SCPC","hacia":"SCPG-SCPC","tiempo":0.9,"notas":"","isIFR":false},{"id":"xl0116","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2025-01-05","desde":"SCPC","hacia":"SCGO","tiempo":0.8,"notas":"","isIFR":false},{"id":"xl0117","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2025-01-05","desde":"SCGO","hacia":"SCLC","tiempo":2.3,"notas":"","isIFR":false},{"id":"xl0118","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2025-01-10","desde":"SCLC","hacia":"LOCAL","tiempo":0.7,"notas":"Ramon Castro","isIFR":false},{"id":"xl0119","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2025-03-21","desde":"SHFY","hacia":"SCLC","tiempo":1.1,"notas":"","isIFR":false},{"id":"xl0120","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2025-04-01","desde":"SCHG","hacia":"SCLC","tiempo":0.7,"notas":"","isIFR":false},{"id":"xl0121","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2025-05-11","desde":"SCLC","hacia":"LOCAL","tiempo":0.6,"notas":"","isIFR":false},{"id":"xl0122","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2025-05-13","desde":"SCLC","hacia":"LOCAL","tiempo":1.3,"notas":"","isIFR":false},{"id":"xl0123","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2025-05-31","desde":"SCLC","hacia":"SCHG-SCLC","tiempo":0.7,"notas":"","isIFR":false},{"id":"xl0124","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2025-06-01","desde":"SCLC","hacia":"SCHG-SCLC","tiempo":1.5,"notas":"","isIFR":false},{"id":"xl0125","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2025-07-23","desde":"SCLC","hacia":"LOCAL","tiempo":0.3,"notas":"","isIFR":false},{"id":"xl0126","category":"Helicoptero","tipo":"Helicoptero","modelo":"B407","matricula":"CC-ACC","fecha":"2025-08-25","desde":"SCLC","hacia":"LOCAL","tiempo":0.4,"notas":"","isIFR":false},{"id":"xl0127","category":"Helicoptero","tipo":"Helicoptero","modelo":"B408","matricula":"CC-ACC","fecha":"2025-09-24","desde":"SCLC","hacia":"LOCAL","tiempo":0.5,"notas":"","isIFR":false},{"id":"xl0128","category":"Helicoptero","tipo":"Helicoptero","modelo":"B409","matricula":"CC-ACC","fecha":"2025-10-22","desde":"SCLC","hacia":"LOCAL","tiempo":0.5,"notas":"","isIFR":false},{"id":"xl0129","category":"Helicoptero","tipo":"Helicoptero","modelo":"B410","matricula":"CC-ACC","fecha":"2025-11-16","desde":"SCLC","hacia":"LOCAL","tiempo":1.3,"notas":"","isIFR":false},{"id":"xl0130","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2021-08-08","desde":"SCLC","hacia":"Local","tiempo":1.0,"notas":"","isIFR":false},{"id":"xl0131","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2021-09-29","desde":"SCLC","hacia":"Local","tiempo":0.4,"notas":"","isIFR":false},{"id":"xl0132","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2021-10-01","desde":"SCVI","hacia":"SCLC","tiempo":2.8,"notas":"","isIFR":false},{"id":"xl0133","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2021-10-05","desde":"SCLC","hacia":"Local","tiempo":0.7,"notas":"","isIFR":false},{"id":"xl0134","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2021-10-28","desde":"SCLC","hacia":"SCCH-SCVI","tiempo":3.8,"notas":"","isIFR":false},{"id":"xl0135","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2021-10-31","desde":"SCVI","hacia":"Local","tiempo":0.4,"notas":"","isIFR":false},{"id":"xl0136","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2021-11-21","desde":"SCLC","hacia":"SCHG-SCLC","tiempo":2.1,"notas":"","isIFR":false},{"id":"xl0137","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2021-11-27","desde":"SCLC","hacia":"SCHG-LI-LC","tiempo":2.3,"notas":"","isIFR":false},{"id":"xl0138","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2021-12-04","desde":"SCIE","hacia":"SCLC","tiempo":2.0,"notas":"","isIFR":false},{"id":"xl0139","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2021-12-08","desde":"SCLC","hacia":"SCVI","tiempo":2.8,"notas":"","isIFR":false},{"id":"xl0140","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2021-12-13","desde":"SCVI","hacia":"SCLC","tiempo":2.7,"notas":"","isIFR":false},{"id":"xl0141","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2021-12-16","desde":"SCLC","hacia":"SCPC-LC","tiempo":5.4,"notas":"","isIFR":false},{"id":"xl0142","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2022-01-16","desde":"SCLC","hacia":"SCPC-LC","tiempo":6.1,"notas":"","isIFR":false},{"id":"xl0143","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2022-05-01","desde":"SCLC","hacia":"Local","tiempo":0.9,"notas":"","isIFR":false},{"id":"xl0144","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2022-06-02","desde":"SCLC","hacia":"SCHC-LC","tiempo":0.9,"notas":"","isIFR":false},{"id":"xl0145","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2022-06-20","desde":"SCLC","hacia":"SCHG-LC","tiempo":1.4,"notas":"","isIFR":false},{"id":"xl0146","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2022-06-20","desde":"SCLC","hacia":"SCHC-LC","tiempo":0.65,"notas":"","isIFR":false},{"id":"xl0147","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2022-07-17","desde":"SCLC","hacia":"SCHC-LC","tiempo":0.76,"notas":"","isIFR":false},{"id":"xl0148","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2022-07-29","desde":"SCLC","hacia":"Local","tiempo":1.0,"notas":"","isIFR":false},{"id":"xl0149","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2022-08-15","desde":"SCLC","hacia":"SCPC-LC","tiempo":2.2,"notas":"","isIFR":false},{"id":"xl0150","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2022-08-19","desde":"SCLC","hacia":"Local","tiempo":0.7,"notas":"","isIFR":false},{"id":"xl0151","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2022-08-20","desde":"SCLC","hacia":"Local","tiempo":0.6,"notas":"","isIFR":false},{"id":"xl0152","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2022-08-26","desde":"SCLC","hacia":"SCHC-LC","tiempo":1.0,"notas":"","isIFR":false},{"id":"xl0153","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2022-08-28","desde":"SCLC","hacia":"SCHC-LC","tiempo":0.8,"notas":"","isIFR":false},{"id":"xl0154","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2022-09-01","desde":"SCLC","hacia":"SCTS-SCRS-SCLC","tiempo":1.8,"notas":"R. Sepulveda","isIFR":false},{"id":"xl0155","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2022-09-02","desde":"SCLC","hacia":"SCHC-LC","tiempo":1.2,"notas":"","isIFR":false},{"id":"xl0156","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2022-09-05","desde":"SCLC","hacia":"SCOM-SCLC","tiempo":1.2,"notas":"R. Sepulveda","isIFR":false},{"id":"xl0157","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2022-09-06","desde":"SCHG","hacia":"SCLC","tiempo":0.7,"notas":"","isIFR":false},{"id":"xl0158","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2022-09-06","desde":"SCLC","hacia":"SCHC-LC","tiempo":0.9,"notas":"","isIFR":false},{"id":"xl0159","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2022-09-09","desde":"SCLC","hacia":"SCPC-LC","tiempo":2.7,"notas":"","isIFR":false},{"id":"xl0160","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2022-09-14","desde":"SCPC","hacia":"Local","tiempo":0.6,"notas":"","isIFR":false},{"id":"xl0161","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2022-09-15","desde":"SCPC","hacia":"SCLC","tiempo":2.9,"notas":"","isIFR":false},{"id":"xl0162","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2022-09-19","desde":"SCLC","hacia":"SCLI","tiempo":1.0,"notas":"","isIFR":false},{"id":"xl0163","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2022-09-19","desde":"SCLI","hacia":"SCLC","tiempo":1.1,"notas":"","isIFR":false},{"id":"xl0164","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2022-10-15","desde":"SCPF","hacia":"SCPG","tiempo":1.0,"notas":"","isIFR":false},{"id":"xl0165","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2022-10-16","desde":"SCPG","hacia":"SCLI","tiempo":2.5,"notas":"","isIFR":false},{"id":"xl0166","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2022-10-16","desde":"SCLI","hacia":"SCLC","tiempo":1.0,"notas":"","isIFR":false},{"id":"xl0167","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2022-11-13","desde":"SCLC","hacia":"Local","tiempo":0.3,"notas":"","isIFR":false},{"id":"xl0168","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2022-11-13","desde":"SCLC","hacia":"Local","tiempo":0.8,"notas":"","isIFR":false},{"id":"xl0169","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2022-11-14","desde":"SCLC","hacia":"SCTE","tiempo":4.3,"notas":"","isIFR":false},{"id":"xl0170","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2022-11-15","desde":"SCTE","hacia":"SCST-RH-SCPF","tiempo":2.7,"notas":"","isIFR":false},{"id":"xl0171","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2022-11-28","desde":"SCLC","hacia":"SCHC-LC","tiempo":0.7,"notas":"","isIFR":false},{"id":"xl0172","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2022-12-02","desde":"SCLC","hacia":"SCHC-LC","tiempo":0.9,"notas":"","isIFR":false},{"id":"xl0173","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2022-12-22","desde":"SCLC","hacia":"SCPC","tiempo":2.5,"notas":"","isIFR":false},{"id":"xl0174","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2022-12-23","desde":"SCPC","hacia":"SCLI","tiempo":2.6,"notas":"","isIFR":false},{"id":"xl0175","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2022-12-23","desde":"SCLI","hacia":"SCLC","tiempo":1.0,"notas":"","isIFR":false},{"id":"xl0176","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2022-12-28","desde":"SCLC","hacia":"SCPC","tiempo":2.8,"notas":"","isIFR":false},{"id":"xl0177","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2023-01-02","desde":"SCPC","hacia":"SCLC","tiempo":2.7,"notas":"","isIFR":false},{"id":"xl0178","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2023-01-08","desde":"SCLC","hacia":"SCPC-LC","tiempo":5.7,"notas":"","isIFR":false},{"id":"xl0179","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2023-01-11","desde":"SCLC","hacia":"Local","tiempo":0.7,"notas":"","isIFR":false},{"id":"xl0180","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2023-01-19","desde":"SCLC","hacia":"Local","tiempo":0.5,"notas":"","isIFR":false},{"id":"xl0181","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2023-02-01","desde":"SCLC","hacia":"SCHG","tiempo":0.7,"notas":"","isIFR":false},{"id":"xl0182","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2023-02-03","desde":"SCLC","hacia":"SCHC-LC","tiempo":0.8,"notas":"","isIFR":false},{"id":"xl0183","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2023-02-04","desde":"SCHG","hacia":"SCGF","tiempo":2.6,"notas":"","isIFR":false},{"id":"xl0184","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2023-02-06","desde":"SCGF","hacia":"SCVI-PG","tiempo":0.9,"notas":"","isIFR":false},{"id":"xl0185","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2023-02-07","desde":"SCPG","hacia":"Local","tiempo":1.3,"notas":"","isIFR":false},{"id":"xl0186","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2023-02-09","desde":"SCPG","hacia":"SCQP-SCPG","tiempo":1.2,"notas":"","isIFR":false},{"id":"xl0187","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2023-02-10","desde":"SCPG","hacia":"SCPC","tiempo":0.8,"notas":"","isIFR":false},{"id":"xl0188","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2023-02-16","desde":"SCPC","hacia":"Local","tiempo":1.0,"notas":"","isIFR":false},{"id":"xl0189","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2023-02-19","desde":"SCPC","hacia":"SCJO","tiempo":0.9,"notas":"","isIFR":false},{"id":"xl0190","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2023-02-20","desde":"SCJO","hacia":"SCPM","tiempo":2.7,"notas":"","isIFR":false},{"id":"xl0191","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2023-02-22","desde":"SCPM","hacia":"SCTB","tiempo":0.9,"notas":"","isIFR":false},{"id":"xl0192","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2023-02-22","desde":"SCTB","hacia":"SCLC","tiempo":0.2,"notas":"","isIFR":false},{"id":"xl0193","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2023-02-25","desde":"SCLC","hacia":"Local","tiempo":0.6,"notas":"","isIFR":false},{"id":"xl0194","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2023-03-03","desde":"SCLC","hacia":"SCHG","tiempo":0.7,"notas":"","isIFR":false},{"id":"xl0195","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2023-03-03","desde":"SCHG","hacia":"SCLC","tiempo":0.9,"notas":"","isIFR":false},{"id":"xl0196","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2023-03-05","desde":"SCLC","hacia":"SCHC-LC","tiempo":1.0,"notas":"","isIFR":false},{"id":"xl0197","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2023-03-12","desde":"SCLC","hacia":"SCHC-LC","tiempo":0.7,"notas":"","isIFR":false},{"id":"xl0198","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2023-03-17","desde":"SCLC","hacia":"SCHC-LC","tiempo":0.6,"notas":"","isIFR":false},{"id":"xl0199","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2023-05-03","desde":"SCLC","hacia":"Local","tiempo":0.6,"notas":"","isIFR":false},{"id":"xl0200","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2023-05-25","desde":"SCHG","hacia":"SCLC","tiempo":1.0,"notas":"","isIFR":false},{"id":"xl0201","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2023-05-26","desde":"SCHG","hacia":"Local","tiempo":0.3,"notas":"","isIFR":false},{"id":"xl0202","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2023-06-01","desde":"SCLC","hacia":"SCHG","tiempo":0.6,"notas":"","isIFR":false},{"id":"xl0203","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2023-06-17","desde":"SCLC","hacia":"Local","tiempo":1.4,"notas":"","isIFR":false},{"id":"xl0204","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2023-07-01","desde":"SCLC","hacia":"SCLV-LC","tiempo":2.0,"notas":"","isIFR":false},{"id":"xl0205","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2023-08-03","desde":"SCHG","hacia":"SCLC","tiempo":0.9,"notas":"","isIFR":false},{"id":"xl0206","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2023-08-04","desde":"SCLC","hacia":"SCHC-LC","tiempo":1.0,"notas":"","isIFR":false},{"id":"xl0207","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2023-08-08","desde":"SCLC","hacia":"SCHC-LC","tiempo":0.6,"notas":"","isIFR":false},{"id":"xl0208","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2023-08-11","desde":"SCLC","hacia":"SCHC-LC","tiempo":0.7,"notas":"","isIFR":false},{"id":"xl0209","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2023-08-12","desde":"SCLC","hacia":"Local","tiempo":0.6,"notas":"","isIFR":false},{"id":"xl0210","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2023-08-20","desde":"SCLC","hacia":"Local","tiempo":0.5,"notas":"","isIFR":false},{"id":"xl0211","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2023-08-27","desde":"SCLC","hacia":"Local","tiempo":1.0,"notas":"","isIFR":false},{"id":"xl0212","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2023-09-11","desde":"SCLC","hacia":"Local","tiempo":0.8,"notas":"","isIFR":false},{"id":"xl0213","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2023-09-15","desde":"SCLC","hacia":"SCHG","tiempo":0.5,"notas":"","isIFR":false},{"id":"xl0214","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2023-09-15","desde":"SCLC","hacia":"Local","tiempo":0.9,"notas":"","isIFR":false},{"id":"xl0215","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2023-09-18","desde":"SCHG","hacia":"SCQP-SCLC","tiempo":2.5,"notas":"","isIFR":false},{"id":"xl0216","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2023-09-23","desde":"SCPC","hacia":"SCLC","tiempo":3.0,"notas":"","isIFR":false},{"id":"xl0217","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2023-09-26","desde":"SCLC","hacia":"SCTB","tiempo":0.4,"notas":"","isIFR":false},{"id":"xl0218","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2023-09-29","desde":"SCLC","hacia":"Local","tiempo":0.6,"notas":"","isIFR":false},{"id":"xl0219","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2023-10-06","desde":"SCLC","hacia":"Local","tiempo":0.6,"notas":"","isIFR":false},{"id":"xl0220","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2023-10-07","desde":"SCLC","hacia":"Local","tiempo":0.5,"notas":"","isIFR":false},{"id":"xl0221","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2023-10-08","desde":"SCLC","hacia":"Local","tiempo":0.7,"notas":"","isIFR":false},{"id":"xl0222","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2023-10-16","desde":"SCLC","hacia":"Local","tiempo":0.6,"notas":"","isIFR":false},{"id":"xl0223","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2023-10-18","desde":"SCLC","hacia":"Local","tiempo":0.5,"notas":"","isIFR":false},{"id":"xl0224","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2023-11-05","desde":"SCLC","hacia":"Local","tiempo":0.6,"notas":"","isIFR":false},{"id":"xl0225","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2023-11-18","desde":"SCLC","hacia":"SCHG","tiempo":0.7,"notas":"","isIFR":false},{"id":"xl0226","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2023-11-19","desde":"SCHG","hacia":"SCLC","tiempo":0.7,"notas":"","isIFR":false},{"id":"xl0227","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2023-11-26","desde":"SCLC","hacia":"SCMZ-LC","tiempo":1.4,"notas":"","isIFR":false},{"id":"xl0228","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2023-11-30","desde":"SCLC","hacia":"SCHG","tiempo":0.6,"notas":"","isIFR":false},{"id":"xl0229","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2023-12-02","desde":"SCHG","hacia":"SCLV-SCQP-SCLC","tiempo":8.7,"notas":"","isIFR":false},{"id":"xl0230","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2023-12-14","desde":"SCLC","hacia":"Local","tiempo":0.8,"notas":"","isIFR":false},{"id":"xl0231","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2023-12-15","desde":"SCLC","hacia":"Local","tiempo":0.4,"notas":"","isIFR":false},{"id":"xl0232","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2023-12-20","desde":"SCLC","hacia":"Local","tiempo":0.4,"notas":"","isIFR":false},{"id":"xl0233","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2023-12-23","desde":"SCLC","hacia":"Local","tiempo":1.5,"notas":"","isIFR":false},{"id":"xl0234","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2023-12-26","desde":"SCLC","hacia":"Local","tiempo":0.7,"notas":"","isIFR":false},{"id":"xl0235","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2024-01-02","desde":"SCLC","hacia":"Local","tiempo":0.6,"notas":"","isIFR":false},{"id":"xl0236","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2024-01-04","desde":"SCLC","hacia":"Local","tiempo":0.5,"notas":"","isIFR":false},{"id":"xl0237","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2024-01-05","desde":"SCLC","hacia":"SCPC","tiempo":2.7,"notas":"","isIFR":false},{"id":"xl0238","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2024-01-07","desde":"SCPC","hacia":"SCLC","tiempo":3.0,"notas":"","isIFR":false},{"id":"xl0239","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2024-01-11","desde":"SCLC","hacia":"SCPC","tiempo":2.8,"notas":"","isIFR":false},{"id":"xl0240","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2024-01-15","desde":"SCPC","hacia":"SCLC","tiempo":2.8,"notas":"","isIFR":false},{"id":"xl0241","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2024-01-19","desde":"SCLC","hacia":"SCPC","tiempo":3.0,"notas":"","isIFR":false},{"id":"xl0242","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2024-01-26","desde":"SCPC","hacia":"SCQP","tiempo":1.7,"notas":"","isIFR":false},{"id":"xl0243","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2024-01-26","desde":"SCQP","hacia":"SCPC","tiempo":0.4,"notas":"","isIFR":false},{"id":"xl0244","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2024-01-28","desde":"SCPC","hacia":"SCVL-PC","tiempo":1.5,"notas":"","isIFR":false},{"id":"xl0245","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2024-02-08","desde":"SCPC","hacia":"SCLC-SCPC","tiempo":5.6,"notas":"","isIFR":false},{"id":"xl0246","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2024-02-09","desde":"SCPC","hacia":"SCGF-SCPF","tiempo":1.7,"notas":"","isIFR":false},{"id":"xl0247","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2024-02-09","desde":"SCPF","hacia":"SCFT","tiempo":1.7,"notas":"","isIFR":false},{"id":"xl0248","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2024-02-10","desde":"SCFT","hacia":"SCPY-SCBA","tiempo":1.9,"notas":"","isIFR":false},{"id":"xl0249","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2024-02-10","desde":"SCBA","hacia":"SCSZ","tiempo":1.1,"notas":"","isIFR":false},{"id":"xl0250","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2024-02-12","desde":"SCSZ","hacia":"SCOO","tiempo":2.4,"notas":"","isIFR":false},{"id":"xl0251","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2024-02-12","desde":"SCOO","hacia":"SCPF-SCPC","tiempo":3.1,"notas":"","isIFR":false},{"id":"xl0252","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2024-02-19","desde":"SCPC","hacia":"SCQP","tiempo":1.0,"notas":"","isIFR":false},{"id":"xl0253","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2024-02-19","desde":"SCQP","hacia":"SCPC","tiempo":0.4,"notas":"","isIFR":false},{"id":"xl0254","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2024-02-23","desde":"SCPC","hacia":"Local","tiempo":1.1,"notas":"","isIFR":false},{"id":"xl0255","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2024-02-25","desde":"SCPC","hacia":"SCLC","tiempo":3.0,"notas":"","isIFR":false},{"id":"xl0256","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2024-02-28","desde":"SCLC","hacia":"Local","tiempo":0.3,"notas":"","isIFR":false},{"id":"xl0257","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2024-03-05","desde":"SCLC","hacia":"Local","tiempo":0.8,"notas":"","isIFR":false},{"id":"xl0258","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2024-03-06","desde":"SCLC","hacia":"Local","tiempo":0.5,"notas":"","isIFR":false},{"id":"xl0259","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2024-03-07","desde":"SCLC","hacia":"SCHG-SCLC","tiempo":1.4,"notas":"","isIFR":false},{"id":"xl0260","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2024-03-23","desde":"SCLC","hacia":"SCUM-SCLC","tiempo":4.6,"notas":"","isIFR":false},{"id":"xl0261","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2024-03-31","desde":"SCLC","hacia":"Local","tiempo":1.4,"notas":"","isIFR":false},{"id":"xl0262","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2024-04-16","desde":"SCLC","hacia":"Local","tiempo":0.7,"notas":"","isIFR":false},{"id":"xl0263","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2024-05-15","desde":"SCLC","hacia":"Local","tiempo":0.7,"notas":"","isIFR":false},{"id":"xl0264","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2024-05-25","desde":"SCLC","hacia":"Local","tiempo":0.6,"notas":"","isIFR":false},{"id":"xl0265","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2024-06-02","desde":"SCLC","hacia":"Local","tiempo":1.4,"notas":"","isIFR":false},{"id":"xl0266","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2024-06-17","desde":"SCLC","hacia":"Local","tiempo":0.7,"notas":"","isIFR":false},{"id":"xl0267","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2024-07-25","desde":"SCLC","hacia":"Local","tiempo":1.1,"notas":"","isIFR":false},{"id":"xl0268","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2024-08-03","desde":"SCLC","hacia":"Local","tiempo":1.2,"notas":"","isIFR":false},{"id":"xl0269","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2024-08-08","desde":"SCLC","hacia":"SCMP-SCHG-LC","tiempo":3.0,"notas":"","isIFR":false},{"id":"xl0270","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2024-08-09","desde":"SCLC","hacia":"Local","tiempo":0.4,"notas":"","isIFR":false},{"id":"xl0271","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2024-08-18","desde":"SCLC","hacia":"Local","tiempo":0.8,"notas":"","isIFR":false},{"id":"xl0272","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2024-08-23","desde":"SCLC","hacia":"Local","tiempo":0.5,"notas":"","isIFR":false},{"id":"xl0273","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2024-08-28","desde":"SCLC","hacia":"SCHC-LC","tiempo":0.8,"notas":"Estand.","isIFR":false},{"id":"xl0274","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2024-08-30","desde":"SCLC","hacia":"SCEP-LC","tiempo":0.4,"notas":"Seba Karlezi","isIFR":false},{"id":"xl0276","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2024-08-31","desde":"SCLC","hacia":"Zapallar","tiempo":2.1,"notas":"Aliaga","isIFR":false},{"id":"xl0277","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2024-09-07","desde":"SCLC","hacia":"Local","tiempo":0.6,"notas":"Solo","isIFR":false},{"id":"xl0278","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2024-09-11","desde":"SCLC","hacia":"Local","tiempo":0.9,"notas":"Solo","isIFR":false},{"id":"xl0279","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2024-10-03","desde":"Sctb","hacia":"Sclc","tiempo":0.6,"notas":"CMA","isIFR":false},{"id":"xl0280","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2024-10-04","desde":"SCLC","hacia":"Scts","tiempo":0.4,"notas":"Aerotrust","isIFR":false},{"id":"xl0281","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2024-10-05","desde":"Scts","hacia":"Sclc","tiempo":1.0,"notas":"Aerotrust","isIFR":false},{"id":"xl0282","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2024-11-05","desde":"SCLC","hacia":"Local","tiempo":0.8,"notas":"Solo","isIFR":false},{"id":"xl0283","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2024-11-06","desde":"SCLC","hacia":"Local","tiempo":0.95,"notas":"Solo","isIFR":false},{"id":"xl0284","category":"Avion","tipo":"Piper","modelo":"PA18","matricula":"CC-KWC","fecha":"2024-11-06","desde":"SCLC","hacia":"Local","tiempo":0.62,"notas":"Instrucción","isIFR":false},{"id":"xl0285","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2024-11-08","desde":"SCLC","hacia":"SCHG-SCLC","tiempo":1.5,"notas":"Almahue","isIFR":false},{"id":"xl0286","category":"Avion","tipo":"Piper","modelo":"PA18","matricula":"CC-PRW","fecha":"2024-11-18","desde":"SCLC","hacia":"Local","tiempo":0.5,"notas":"Instrucción","isIFR":false},{"id":"xl0287","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2024-11-21","desde":"SCLC","hacia":"SCPM-LC","tiempo":2.4,"notas":"Solo","isIFR":false},{"id":"xl0288","category":"Avion","tipo":"Piper","modelo":"PA18","matricula":"CC-KWQ","fecha":"2024-11-23","desde":"SCLC","hacia":"Local","tiempo":0.75,"notas":"Instrucción","isIFR":false},{"id":"xl0289","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2024-11-25","desde":"SCLC","hacia":"Local","tiempo":0.6,"notas":"Solo","isIFR":false},{"id":"xl0290","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2024-12-17","desde":"SCLC","hacia":"Local","tiempo":0.3,"notas":"Solo","isIFR":false},{"id":"xl0291","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2024-12-20","desde":"SCLC","hacia":"Local","tiempo":0.6,"notas":"Sunset ","isIFR":false},{"id":"xl0292","category":"Avion","tipo":"Piper","modelo":"PA18","matricula":"CC-PRW","fecha":"2024-12-26","desde":"SCLC","hacia":"Local","tiempo":0.18,"notas":"Instrucción","isIFR":false},{"id":"xl0293","category":"Avion","tipo":"Piper","modelo":"PA18","matricula":"CC-PRW","fecha":"2025-01-22","desde":"SCLC","hacia":"Local","tiempo":0.2,"notas":"Instrucción","isIFR":false},{"id":"xl0294","category":"Avion","tipo":"Piper","modelo":"PA18","matricula":"CC-PRW","fecha":"2025-01-22","desde":"SCLC","hacia":"Local","tiempo":0.2,"notas":"Instrucción","isIFR":false},{"id":"xl0295","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-01-30","desde":"SCLC","hacia":"SCPC","tiempo":2.7,"notas":"Familia","isIFR":false},{"id":"xl0296","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-01-31","desde":"SCPC","hacia":"Local","tiempo":0.5,"notas":"Familia","isIFR":false},{"id":"xl0297","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-02-01","desde":"SCPC","hacia":"SCGF-SCPC","tiempo":1.4,"notas":"Familia","isIFR":false},{"id":"xl0298","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-02-04","desde":"SCPC","hacia":"SCVL-PC","tiempo":1.5,"notas":"Familia","isIFR":false},{"id":"xl0299","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-02-07","desde":"SCPC","hacia":"SCLD","tiempo":1.4,"notas":"Puelo","isIFR":false},{"id":"xl0300","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-02-08","desde":"SCLD","hacia":"SCTE-PC","tiempo":2.2,"notas":"Puelo","isIFR":false},{"id":"xl0301","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-02-11","desde":"SCPC","hacia":"SCIM-PC","tiempo":1.9,"notas":"Isla Mocha","isIFR":false},{"id":"xl0302","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-02-13","desde":"SCPC","hacia":"SCPG-PC","tiempo":0.7,"notas":"Panguipulli","isIFR":false},{"id":"xl0303","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-02-15","desde":"SCPC","hacia":"SCGO","tiempo":0.9,"notas":"Angol Fuel","isIFR":false},{"id":"xl0304","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-02-15","desde":"SCGO","hacia":"SCHG","tiempo":1.6,"notas":"Angol Almahue","isIFR":false},{"id":"xl0305","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-02-15","desde":"SCHG","hacia":"SCGF","tiempo":2.8,"notas":"Ranco","isIFR":false},{"id":"xl0306","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-02-17","desde":"SCGF","hacia":"SCTE","tiempo":0.8,"notas":"Tepual Fuel","isIFR":false},{"id":"xl0307","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-02-17","desde":"SCTE","hacia":"SCGB","tiempo":0.8,"notas":"Gamboa","isIFR":false},{"id":"xl0308","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-02-20","desde":"SCGB","hacia":"SCPC","tiempo":1.8,"notas":"Tepual Fuel","isIFR":false},{"id":"xl0309","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-02-28","desde":"SCPC","hacia":"SCVI-PC","tiempo":0.5,"notas":"Paseo","isIFR":false},{"id":"xl0310","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-03-02","desde":"SCPC","hacia":"SCLC","tiempo":3.1,"notas":"Familia","isIFR":false},{"id":"xl0311","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2025-03-14","desde":"SCLC","hacia":"Local","tiempo":0.7,"notas":"Solo","isIFR":false},{"id":"xl0312","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-04-01","desde":"SCLC","hacia":"SCTB-LC","tiempo":0.4,"notas":"CMA","isIFR":false},{"id":"xl0313","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-04-04","desde":"SCLC","hacia":"LOCAL","tiempo":0.4,"notas":"Solo","isIFR":false},{"id":"xl0314","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-04-15","desde":"SCLC","hacia":"LOCAL","tiempo":0.7,"notas":"Solo","isIFR":false},{"id":"xl0315","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-04-27","desde":"SCLC","hacia":"SCPM-LC","tiempo":1.7,"notas":"Pichilemu","isIFR":false},{"id":"xl0316","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-05-09","desde":"SCLC","hacia":"LOCAL","tiempo":1.2,"notas":"Sunset ","isIFR":false},{"id":"xl0317","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2025-05-27","desde":"SCLC","hacia":"Local","tiempo":0.6,"notas":"Solo","isIFR":false},{"id":"xl0318","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2025-05-28","desde":"SCLC","hacia":"Local","tiempo":0.2,"notas":"Solo","isIFR":false},{"id":"xl0319","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2025-05-30","desde":"SCLC","hacia":"Local","tiempo":0.5,"notas":"Solo","isIFR":false},{"id":"xl0320","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2025-06-13","desde":"SCLC","hacia":"Local","tiempo":0.4,"notas":"Solo","isIFR":false},{"id":"xl0321","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2025-06-18","desde":"SCLC","hacia":"Local","tiempo":0.5,"notas":"Solo","isIFR":false},{"id":"xl0322","category":"Avion","tipo":"Piper","modelo":"PA18","matricula":"CC-KWI","fecha":"2025-06-21","desde":"SCLC","hacia":"Local","tiempo":0.27,"notas":"Instrucción","isIFR":false},{"id":"xl0323","category":"Avion","tipo":"Piper","modelo":"PA19","matricula":"CC-KWI","fecha":"2025-06-21","desde":"SCLC","hacia":"Local","tiempo":0.27,"notas":"Instrucción","isIFR":false},{"id":"xl0324","category":"Avion","tipo":"Piper","modelo":"PA20","matricula":"CC-KWI","fecha":"2025-06-21","desde":"SCLC","hacia":"Local","tiempo":0.28,"notas":"Instrucción","isIFR":false},{"id":"xl0325","category":"Avion","tipo":"Piper","modelo":"PA21","matricula":"CC-KWI","fecha":"2025-06-21","desde":"SCLC","hacia":"Local","tiempo":0.27,"notas":"Instrucción","isIFR":false},{"id":"xl0326","category":"Avion","tipo":"Piper","modelo":"PA22","matricula":"CC-KWI","fecha":"2025-06-21","desde":"SCLC","hacia":"Local","tiempo":0.27,"notas":"Instrucción","isIFR":false},{"id":"xl0327","category":"Avion","tipo":"Piper","modelo":"PA23","matricula":"CC-KWI","fecha":"2025-06-21","desde":"SCLC","hacia":"Local","tiempo":0.28,"notas":"Instrucción","isIFR":false},{"id":"xl0328","category":"Avion","tipo":"Piper","modelo":"PA23","matricula":"CC-KWI","fecha":"2025-06-21","desde":"SCLC","hacia":"Local","tiempo":0.28,"notas":"Instrucción","isIFR":false},{"id":"xl0329","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-07-01","desde":"SCLC","hacia":"SCSN-LC","tiempo":1.7,"notas":"IFR","isIFR":true},{"id":"xl0330","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2025-07-03","desde":"SCLC","hacia":"Local","tiempo":0.7,"notas":"Mati Errazuriz","isIFR":false},{"id":"xl0331","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2025-07-06","desde":"SCLC","hacia":"Local","tiempo":0.3,"notas":"Solo","isIFR":false},{"id":"xl0332","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-07-07","desde":"SCLC","hacia":"SCSN-LC","tiempo":1.6,"notas":"IFR","isIFR":true},{"id":"xl0333","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2025-07-11","desde":"SCLC","hacia":"SCVH-MP-LC","tiempo":1.7,"notas":"Felipe Allende","isIFR":false},{"id":"xl0334","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2025-07-20","desde":"SCLC","hacia":"Local","tiempo":0.5,"notas":"Solo","isIFR":false},{"id":"xl0335","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-08-02","desde":"SCLC","hacia":"SCVN","tiempo":2.2,"notas":"Raid","isIFR":false},{"id":"xl0336","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-08-03","desde":"SCVN","hacia":"SCLC","tiempo":1.3,"notas":"Raid","isIFR":false},{"id":"xl0337","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-08-06","desde":"SCLC","hacia":"SCTB","tiempo":0.1,"notas":"Tobalaba","isIFR":false},{"id":"xl0338","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-08-07","desde":"SCLC","hacia":"SCVN","tiempo":1.5,"notas":"IFR","isIFR":true},{"id":"xl0339","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2025-08-08","desde":"SCLC","hacia":"Local","tiempo":0.4,"notas":"Solo","isIFR":false},{"id":"xl0340","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-08-11","desde":"SCLC","hacia":"SN-LC","tiempo":1.6,"notas":"IFR","isIFR":true},{"id":"xl0341","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2025-08-14","desde":"SCLC","hacia":"Local","tiempo":0.6,"notas":"local","isIFR":false},{"id":"xl0342","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2025-08-16","desde":"SCLC","hacia":"Local","tiempo":1.0,"notas":"local","isIFR":false},{"id":"xl0343","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2025-09-13","desde":"SCLC","hacia":"Local","tiempo":0.5,"notas":"local","isIFR":false},{"id":"xl0344","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-09-15","desde":"SCLC","hacia":"SCPC","tiempo":2.7,"notas":"PUCON","isIFR":false},{"id":"xl0345","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-09-17","desde":"SCPC","hacia":"SCVI-PC","tiempo":0.5,"notas":"LOCAL PUCON","isIFR":false},{"id":"xl0346","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-09-22","desde":"SCPC","hacia":"SCLC","tiempo":3.1,"notas":"PUCON","isIFR":false},{"id":"xl0347","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-09-24","desde":"SCLC","hacia":"SCTB","tiempo":0.1,"notas":"MANTENCION","isIFR":false},{"id":"xl0348","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2025-10-03","desde":"SCLC","hacia":"Local","tiempo":0.8,"notas":"local","isIFR":false},{"id":"xl0349","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-10-03","desde":"SCTB","hacia":"SCLC","tiempo":0.5,"notas":"LOCAL","isIFR":false},{"id":"xl0350","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2025-10-07","desde":"SCLC","hacia":"Local","tiempo":1.5,"notas":"local","isIFR":false},{"id":"xl0351","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2025-10-09","desde":"SCLC","hacia":"Local","tiempo":0.5,"notas":"local","isIFR":false},{"id":"xl0352","category":"Avion","tipo":"TBM","modelo":"Husky","matricula":"N850GS","fecha":"2025-10-13","desde":"KMIE","hacia":"KMVN","tiempo":1.25,"notas":"","isIFR":false},{"id":"xl0353","category":"Avion","tipo":"TBM","modelo":"Husky","matricula":"N850GS","fecha":"2025-10-13","desde":"KVBT","hacia":"KDDC","tiempo":1.67,"notas":"","isIFR":false},{"id":"xl0354","category":"Avion","tipo":"TBM","modelo":"Husky","matricula":"N850GS","fecha":"2025-10-14","desde":"KSBS","hacia":"KLXV","tiempo":1.27,"notas":"","isIFR":false},{"id":"xl0355","category":"Avion","tipo":"TBM","modelo":"Husky","matricula":"N850GS","fecha":"2025-10-14","desde":"KASE","hacia":"KTEX","tiempo":0.85,"notas":"","isIFR":false},{"id":"xl0356","category":"Avion","tipo":"TBM","modelo":"Husky","matricula":"N850GS","fecha":"2025-10-14","desde":"KCOS","hacia":"KMIE","tiempo":3.38,"notas":"","isIFR":false},{"id":"xl0357","category":"Avion","tipo":"TBM","modelo":"Husky","matricula":"N850GS","fecha":"2025-10-15","desde":"KDAY","hacia":"KMIE","tiempo":1.0,"notas":"","isIFR":false},{"id":"xl0358","category":"Avion","tipo":"TBM","modelo":"Husky","matricula":"N850GS","fecha":"2025-10-16","desde":"KCEV","hacia":"KCOS","tiempo":1.1,"notas":"","isIFR":false},{"id":"xl0359","category":"Avion","tipo":"TBM","modelo":"Husky","matricula":"N850GS","fecha":"2025-10-17","desde":"MPMG","hacia":"SEGU","tiempo":2.87,"notas":"","isIFR":false},{"id":"xl0360","category":"Avion","tipo":"TBM","modelo":"Husky","matricula":"N850GS","fecha":"2025-10-18","desde":"SEGU","hacia":"SCAR","tiempo":4.82,"notas":"","isIFR":false},{"id":"xl0361","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-10-20","desde":"SCLC","hacia":"SCSN-LC","tiempo":1.8,"notas":"IFR","isIFR":true},{"id":"xl0362","category":"Avion","tipo":"TBM","modelo":"206","matricula":"N850GS","fecha":"2025-10-20","desde":"SCPD","hacia":"SCTB","tiempo":0.5,"notas":"","isIFR":false},{"id":"xl0363","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-10-24","desde":"SCLC","hacia":"SCSN-LC","tiempo":1.6,"notas":"IFR","isIFR":true},{"id":"xl0364","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2025-10-25","desde":"SCLC","hacia":"SCMZ-LC","tiempo":1.9,"notas":"local","isIFR":false},{"id":"xl0365","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2025-10-28","desde":"SCLC","hacia":"Local","tiempo":0.5,"notas":"local","isIFR":false},{"id":"xl0366","category":"Avion","tipo":"TBM","modelo":"Husky","matricula":"N850GS","fecha":"2025-10-31","desde":"SCFL","hacia":"SCTB","tiempo":0.83,"notas":"","isIFR":false},{"id":"xl0367","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-11-01","desde":"SCLC","hacia":"SCHG","tiempo":0.7,"notas":"Almahue","isIFR":false},{"id":"xl0368","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-11-02","desde":"SCHG","hacia":"SCLC","tiempo":0.7,"notas":"Almahue","isIFR":false},{"id":"xl0369","category":"Avion","tipo":"TBM","modelo":"206","matricula":"N850GS","fecha":"2025-11-11","desde":"SCTB","hacia":"SCPD","tiempo":0.5,"notas":"","isIFR":false},{"id":"xl0370","category":"Avion","tipo":"TBM","modelo":"206","matricula":"N850GS","fecha":"2025-11-13","desde":"SCTB","hacia":"SCRG","tiempo":1.2,"notas":"","isIFR":false},{"id":"xl0371","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-11-14","desde":"SCLC","hacia":"SC-TL-CH-IE-HG-LC","tiempo":4.6,"notas":"RAID IFR","isIFR":true},{"id":"xl0372","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-11-26","desde":"SCLC","hacia":"SCLC-SE-LC","tiempo":3.5,"notas":"RAID IFR","isIFR":true},{"id":"xl0373","category":"Avion","tipo":"TBM","modelo":"206","matricula":"N850GS","fecha":"2025-11-27","desde":"SCTB","hacia":"SCTB","tiempo":0.5,"notas":"","isIFR":false},{"id":"xl0374","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-11-29","desde":"SCLC","hacia":"SCSN-LC","tiempo":2.0,"notas":"IFR","isIFR":true},{"id":"xl0375","category":"Avion","tipo":"TBM","modelo":"206","matricula":"N850GS","fecha":"2025-11-30","desde":"SCTB","hacia":"SCTB","tiempo":1.0,"notas":"","isIFR":false},{"id":"xl0376","category":"Avion","tipo":"TBM","modelo":"206","matricula":"N850GS","fecha":"2025-12-05","desde":"SCTB","hacia":"SCPC","tiempo":1.58,"notas":"","isIFR":false},{"id":"xl0377","category":"Avion","tipo":"Aviat","modelo":"Husky","matricula":"CC-DEK","fecha":"2025-12-10","desde":"SCLC","hacia":"Local","tiempo":0.4,"notas":"Local","isIFR":false},{"id":"xl0378","category":"Avion","tipo":"TBM","modelo":"850","matricula":"N850GS","fecha":"2025-12-10","desde":"KDAY","hacia":"KDAY","tiempo":2.65,"notas":"","isIFR":false},{"id":"xl0379","category":"Avion","tipo":"TBM","modelo":"850","matricula":"N850GS","fecha":"2025-12-10","desde":"KSCA","hacia":"KMIE","tiempo":1.43,"notas":"","isIFR":false},{"id":"xl0380","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-12-15","desde":"SCLC","hacia":"SCSN-LC","tiempo":1.7,"notas":"IFR","isIFR":true},{"id":"xl0381","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-12-16","desde":"SCLC","hacia":"SCSN-LC","tiempo":1.6,"notas":"IFR","isIFR":true},{"id":"xl0382","category":"Avion","tipo":"TBM","modelo":"850","matricula":"N850GS","fecha":"2025-12-18","desde":"SCCH","hacia":"SCTB","tiempo":1.33,"notas":"","isIFR":false},{"id":"xl0383","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2025-12-22","desde":"SCLC","hacia":"SCSN-LC","tiempo":1.7,"notas":"IFR","isIFR":true},{"id":"xl0384","category":"Avion","tipo":"TBM","modelo":"850","matricula":"N850GS","fecha":"2025-12-24","desde":"SCTB","hacia":"SCTB","tiempo":0.5,"notas":"","isIFR":false},{"id":"xl0385","category":"Avion","tipo":"Aeronka","modelo":"Champion","matricula":"CC-PFR","fecha":"2025-12-27","desde":"SCHG","hacia":"SCHG","tiempo":1.0,"notas":"","isIFR":false},{"id":"xl0386","category":"Avion","tipo":"TBM","modelo":"850","matricula":"N850GS","fecha":"2025-12-30","desde":"SCTB","hacia":"SCPC","tiempo":1.5,"notas":"","isIFR":false},{"id":"xl0387","category":"Avion","tipo":"TBM","modelo":"850","matricula":"N850GS","fecha":"2026-01-04","desde":"SCPC","hacia":"SCTB","tiempo":1.5,"notas":"","isIFR":false},{"id":"xl0388","category":"Avion","tipo":"Cessna","modelo":"206","matricula":"CC-AQR","fecha":"2026-01-13","desde":"SCLC","hacia":"SCSN-LC","tiempo":1.8,"notas":"IFR","isIFR":true},{"id":"ren_Planeador","category":"Planeador","tipo":"","modelo":"","matricula":"","fecha":"2024-08-25","desde":"","hacia":"","tiempo":0,"notas":"","isIFR":false,"renewal":true,"renewalLabel":"24 ago 24"},{"id":"ren_Helicoptero","category":"Helicoptero","tipo":"","modelo":"","matricula":"","fecha":"2024-10-21","desde":"","hacia":"","tiempo":0,"notas":"","isIFR":false,"renewal":true,"renewalLabel":"21 oct 24"},{"id":"ren_Avion","category":"Avion","tipo":"","modelo":"","matricula":"","fecha":"2024-08-31","desde":"","hacia":"","tiempo":0,"notas":"","isIFR":false,"renewal":true,"renewalLabel":"31 ago 24"}];
-
 // ─── STATE ──────────────────────────────────────────────────────
-const APP_VERSION = "10.0";
-let currentVersion = localStorage.getItem("flb_version");
-if(currentVersion !== APP_VERSION) {
-  localStorage.removeItem("flb_entries");
-  localStorage.removeItem("flb_settings");
-  localStorage.setItem("flb_version", APP_VERSION);
-}
-let stored = localStorage.getItem("flb_entries");
-let entries = stored ? JSON.parse(stored) : [...PRELOADED];
-if(!stored) localStorage.setItem("flb_entries", JSON.stringify(entries));
-let settings = { ...DEFAULT_SETTINGS, ...JSON.parse(localStorage.getItem("flb_settings") || "{}") };
+let entries = [];
+let settings = { ...DEFAULT_SETTINGS };
 let activeCat = "Avion";
 let editingId = null;
-let currentView = "home";
+let currentUser = null;
+let unsubscribeSnapshot = null;
 
-const save = () => localStorage.setItem("flb_entries", JSON.stringify(entries));
-const saveSets = () => localStorage.setItem("flb_settings", JSON.stringify(settings));
-const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2,6);
 const fh = h => h == null ? "—" : Number(h).toFixed(1);
 const fd = d => { if(!d) return ""; const dt=new Date(d+"T12:00:00"); return dt.toLocaleDateString("es-CL",{day:"2-digit",month:"short",year:"2-digit"}); };
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2,6);
 
+// ─── AUTH ────────────────────────────────────────────────────────
+window.doLogin = async () => {
+  const email = document.getElementById("loginEmail").value.trim();
+  const pass = document.getElementById("loginPass").value;
+  const btn = document.getElementById("loginBtn");
+  const err = document.getElementById("loginErr");
+  if(!email || !pass) { err.textContent = "Completa todos los campos"; return; }
+  btn.disabled = true;
+  err.textContent = "";
+  try {
+    await signInWithEmailAndPassword(auth, email, pass);
+  } catch(e) {
+    err.textContent = "Correo o contraseña incorrectos";
+    btn.disabled = false;
+  }
+};
+
+window.doLogout = async () => {
+  if(!confirm("¿Cerrar sesión?")) return;
+  if(unsubscribeSnapshot) unsubscribeSnapshot();
+  await signOut(auth);
+};
+
+onAuthStateChanged(auth, user => {
+  if(user) {
+    currentUser = user;
+    document.getElementById("loginScreen").classList.add("hidden");
+    document.getElementById("appScreen").classList.remove("hidden");
+    document.getElementById("userBadge").textContent = user.email.split("@")[0] + " · Salir";
+    loadSettings();
+    subscribeEntries();
+  } else {
+    currentUser = null;
+    document.getElementById("loginScreen").classList.remove("hidden");
+    document.getElementById("appScreen").classList.add("hidden");
+    document.getElementById("loginBtn").disabled = false;
+    entries = [];
+  }
+});
+
+// ─── FIRESTORE ───────────────────────────────────────────────────
+function userCol() {
+  return collection(db, "users", currentUser.uid, "flights");
+}
+
+function subscribeEntries() {
+  if(unsubscribeSnapshot) unsubscribeSnapshot();
+  const q = query(userCol(), orderBy("fecha", "asc"));
+  unsubscribeSnapshot = onSnapshot(q, snap => {
+    entries = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    loadSettings();
+    showHome();
+  }, err => {
+    console.error(err);
+    toast("Error al cargar vuelos");
+  });
+}
+
+async function saveFlight(entry) {
+  await setDoc(doc(db, "users", currentUser.uid, "flights", entry.id), entry);
+}
+
+async function deleteFlight(id) {
+  await deleteDoc(doc(db, "users", currentUser.uid, "flights", id));
+}
+
+// ─── SETTINGS (localStorage por usuario) ─────────────────────────
+function settingsKey() { return `flb_settings_${currentUser?.uid}`; }
+function loadSettings() {
+  const s = localStorage.getItem(settingsKey());
+  settings = s ? { ...DEFAULT_SETTINGS, ...JSON.parse(s) } : { ...DEFAULT_SETTINGS };
+}
+function saveSettings_() { localStorage.setItem(settingsKey(), JSON.stringify(settings)); }
+
+// ─── UTILS ───────────────────────────────────────────────────────
 function catEntries(cat) {
   return entries.filter(e => e.category === cat).sort((a,b) => {
     if(a.fecha !== b.fecha) return a.fecha.localeCompare(b.fecha);
@@ -286,8 +365,7 @@ function computeTotals(cat) {
   let periodo = 0, totales = base.horasPrevias||0, ifr = base.ifrBase||0;
   for(const e of sorted) {
     if(e.renewal) { periodo = 0; continue; }
-    totales += e.tiempo||0;
-    periodo += e.tiempo||0;
+    totales += e.tiempo||0; periodo += e.tiempo||0;
     if(e.isIFR) ifr += e.tiempo||0;
   }
   return { periodo, totales, ifr, count: sorted.filter(e=>!e.renewal).length };
@@ -298,44 +376,36 @@ function getEntryTotals(cat, id) {
   let periodo = 0, totales = base.horasPrevias||0, ifr = base.ifrBase||0;
   for(const e of sorted) {
     if(e.renewal) { periodo = 0; if(e.id === id) break; continue; }
-    totales += e.tiempo||0;
-    periodo += e.tiempo||0;
+    totales += e.tiempo||0; periodo += e.tiempo||0;
     if(e.isIFR) ifr += e.tiempo||0;
     if(e.id === id) break;
   }
   return { periodo, totales, ifr };
 }
 
-// ─── TOAST ──────────────────────────────────────────────────────
-function toast(msg) {
+// ─── TOAST ───────────────────────────────────────────────────────
+function toast(msg, color="#10B981") {
   const c = document.getElementById("toastContainer");
-  c.innerHTML = `<div class="toast">${msg}</div>`;
+  c.innerHTML = `<div class="toast" style="background:${color}">${msg}</div>`;
   setTimeout(() => c.innerHTML = "", 2500);
 }
 
-// ─── NAV ────────────────────────────────────────────────────────
+// ─── NAV ─────────────────────────────────────────────────────────
 function renderNav() {
-  const nav = document.getElementById("mainNav");
-  nav.innerHTML = Object.entries(CATS).map(([cat, cfg]) =>
-    `<button class="nav-btn ${activeCat===cat?'active':''}" style="--cat-color:${cfg.color}" onclick="switchCat('${cat}')">
+  document.getElementById("mainNav").innerHTML = Object.entries(CATS).map(([cat, cfg]) =>
+    `<button class="nav-btn ${activeCat===cat?'active':''}" style="--cat-color:${cfg.color}" onclick="window._switchCat('${cat}')">
       <span class="icon">${cfg.icon}</span><span class="label">${cat.toUpperCase()}</span>
     </button>`
   ).join("");
 }
+window._switchCat = cat => { activeCat = cat; showHome(); };
 
-function switchCat(cat) {
-  activeCat = cat;
-  showHome();
-}
-
-// ─── HOME ───────────────────────────────────────────────────────
+// ─── HOME ─────────────────────────────────────────────────────────
 function showHome() {
-  currentView = "home";
   document.getElementById("homeView").classList.remove("hidden");
   document.getElementById("formView").classList.add("hidden");
-  document.getElementById("logView").classList.add("hidden");
   document.getElementById("mainNav").classList.remove("hidden");
-  
+
   const cfg = CATS[activeCat], totals = computeTotals(activeCat);
   document.documentElement.style.setProperty("--cat-color", cfg.color);
   document.getElementById("homeSubtitle").textContent = `${cfg.icon} ${activeCat.toUpperCase()}`;
@@ -349,405 +419,261 @@ function showHome() {
   if(activeCat==="Avion") statsHTML += `<div class="stat-card"><span class="stat-val sm" style="color:#818CF8">${fh(totals.ifr)}</span><span class="stat-label">Hrs IFR</span></div>`;
   document.getElementById("homeStats").innerHTML = statsHTML;
 
-  const allFlights = [...catEntries(activeCat)].reverse();
+  const all = [...catEntries(activeCat)].reverse();
   const sect = document.getElementById("recentSection");
-  if(allFlights.length === 0) { sect.classList.add("hidden"); }
-  else {
-    sect.classList.remove("hidden");
-    document.getElementById("recentList").innerHTML = buildTable(allFlights, activeCat);
-  }
+  sect.classList.toggle("hidden", all.length === 0);
+  document.getElementById("recentList").innerHTML = all.length ? buildTable(all, activeCat) : '';
   renderNav();
 }
 
-// ─── LOG ────────────────────────────────────────────────────────
-function showLog() {
-  currentView = "log";
-  document.getElementById("homeView").classList.add("hidden");
-  document.getElementById("formView").classList.add("hidden");
-  document.getElementById("logView").classList.remove("hidden");
-  document.getElementById("mainNav").classList.remove("hidden");
-
-  const cfg = CATS[activeCat], totals = computeTotals(activeCat);
-  document.getElementById("logTitle").textContent = `Bitácora ${activeCat}`;
-  document.getElementById("logTitle").style.color = cfg.color;
-
-  let ms = `<div class="mini-stat"><span class="v" style="color:${cfg.color}">${fh(totals.periodo)}</span><span class="l">Periodo</span></div>
-    <div class="mini-stat"><span class="v">${fh(totals.totales)}</span><span class="l">Totales</span></div>
-    <div class="mini-stat"><span class="v">${totals.count}</span><span class="l">Vuelos</span></div>`;
-  if(activeCat==="Avion") ms += `<div class="mini-stat"><span class="v" style="color:#818CF8">${fh(totals.ifr)}</span><span class="l">IFR</span></div>`;
-  document.getElementById("logStats").innerHTML = ms;
-
-  const reversed = [...catEntries(activeCat)].reverse();
-  document.getElementById("logList").innerHTML = reversed.length === 0
-    ? '<p class="empty">Sin registros aún</p>'
-    : buildTable(reversed, activeCat);
-  renderNav();
-}
-
+// ─── TABLE ────────────────────────────────────────────────────────
 function buildTable(flights, cat) {
-  const cfg = CATS[cat];
-  const hasIFR = cfg.hasIFR;
-  const colCount = hasIFR ? 12 : 11;
+  const cfg = CATS[cat], hasIFR = cfg.hasIFR, cols = hasIFR ? 12 : 11;
   let html = `<div class="tbl-wrap"><table class="tbl"><thead><tr>
     <th>Fecha</th><th>Tipo</th><th>Modelo</th><th>Matrícula</th>
     <th>${cfg.labels.desde}</th><th>${cfg.labels.hacia}</th>
     <th>Tiempo</th><th>Periodo</th><th>Totales</th>
-    <th>${cfg.labels.notas}</th>${hasIFR ? '<th>IFR</th>' : ''}
-    <th></th>
-  </tr></thead><tbody>`;
+    <th>${cfg.labels.notas}</th>${hasIFR?'<th>IFR</th>':''}
+    <th></th></tr></thead><tbody>`;
   for(const e of flights) {
     if(e.renewal) {
-      html += `<tr class="renewal-row"><td colspan="${colCount}" style="text-align:center;padding:8px">
-        <span class="renewal-badge">RENOVACIÓN DE LICENCIA — ${e.renewalLabel || fd(e.fecha)}</span>
-      </td></tr>`;
+      html += `<tr class="renewal-row"><td colspan="${cols}" style="text-align:center;padding:8px">
+        <span class="renewal-badge">RENOVACIÓN — ${e.renewalLabel||fd(e.fecha)}</span></td></tr>`;
       continue;
     }
     const t = getEntryTotals(cat, e.id);
     html += `<tr>
-      <td>${fd(e.fecha)}</td>
-      <td>${e.tipo}</td>
-      <td>${e.modelo}</td>
-      <td>${e.matricula}</td>
-      <td>${e.desde}</td>
-      <td>${e.hacia}</td>
+      <td>${fd(e.fecha)}</td><td>${e.tipo}</td><td>${e.modelo}</td><td>${e.matricula}</td>
+      <td>${e.desde}</td><td>${e.hacia}</td>
       <td class="t-time">${fh(e.tiempo)}</td>
       <td class="t-per" style="color:${cfg.color}">${fh(t.periodo)}</td>
       <td class="t-tot">${fh(t.totales)}</td>
       <td style="color:#64748B;max-width:120px;overflow:hidden;text-overflow:ellipsis">${e.notas||""}</td>
-      ${hasIFR ? `<td>${e.isIFR ? '<span class="t-ifr">IFR</span>' : ''}</td>` : ''}
+      ${hasIFR?`<td>${e.isIFR?'<span class="t-ifr">IFR</span>':''}</td>`:''}
       <td><div class="t-actions">
-        <button onclick="editEntry('${e.id}')" title="Editar">✏️</button>
-        <button class="del" onclick="confirmDel('${e.id}')" title="Eliminar">🗑</button>
-      </div></td>
-    </tr>`;
+        <button onclick="window._editEntry('${e.id}')">✏️</button>
+        <button class="del" onclick="window._confirmDel('${e.id}')">🗑</button>
+      </div></td></tr>`;
   }
-  html += '</tbody></table></div>';
-  return html;
+  return html + '</tbody></table></div>';
 }
 
-// ─── FORM ───────────────────────────────────────────────────────
+// ─── FORM ─────────────────────────────────────────────────────────
 let formState = {};
 
-function openForm(id) {
+window.openForm = function(id) {
   editingId = id || null;
-  currentView = "form";
   document.getElementById("homeView").classList.add("hidden");
-  document.getElementById("logView").classList.add("hidden");
   document.getElementById("formView").classList.remove("hidden");
   document.getElementById("mainNav").classList.add("hidden");
 
   const cfg = CATS[activeCat];
   const entry = id ? entries.find(e => e.id === id) : null;
-  document.getElementById("formTitle").textContent = (entry ? "Editar" : "Nuevo") + ` Vuelo — ${activeCat}`;
+  document.getElementById("formTitle").textContent = (entry?"Editar":"Nuevo") + ` Vuelo — ${activeCat}`;
 
   let mIdx = 0, matIdx = 0;
   if(entry) {
-    mIdx = cfg.models.findIndex(m => m.tipo === entry.tipo && m.modelo === entry.modelo);
-    if(mIdx < 0) mIdx = 0;
+    mIdx = cfg.models.findIndex(m => m.tipo===entry.tipo && m.modelo===entry.modelo);
+    if(mIdx<0) mIdx=0;
     matIdx = cfg.models[mIdx].mats.indexOf(entry.matricula);
-    if(matIdx < 0) matIdx = 0;
+    if(matIdx<0) matIdx=0;
   }
-
   formState = {
-    modelIdx: mIdx,
-    matIdx: matIdx,
+    modelIdx: mIdx, matIdx,
     fecha: entry ? entry.fecha : new Date().toISOString().split("T")[0],
     desde: entry ? entry.desde : cfg.airports[0],
-    hacia: entry ? entry.hacia : (cfg.airports.includes("LOCAL") ? "LOCAL" : cfg.airports[1]||""),
+    hacia: entry ? entry.hacia : (cfg.airports.includes("LOCAL")?"LOCAL":cfg.airports[1]||""),
     tiempo: entry ? String(entry.tiempo) : "",
     notas: entry ? (entry.notas||"") : "",
     isIFR: entry ? (entry.isIFR||false) : false,
-    customDesde: "",
-    customHacia: "",
+    customDesde: "", customHacia: ""
   };
-
-  if(entry && !cfg.airports.includes(entry.desde)) { formState.desde = "_custom"; formState.customDesde = entry.desde; }
-  if(entry && !cfg.airports.includes(entry.hacia)) { formState.hacia = "_custom"; formState.customHacia = entry.hacia; }
-
+  if(entry && !cfg.airports.includes(entry.desde)) { formState.desde="_custom"; formState.customDesde=entry.desde; }
+  if(entry && !cfg.airports.includes(entry.hacia)) { formState.hacia="_custom"; formState.customHacia=entry.hacia; }
   renderForm();
-}
+};
 
 function renderForm() {
-  const cfg = CATS[activeCat];
-  const m = cfg.models[formState.modelIdx];
-  const mats = m.mats;
-
-  const airportOpts = a => cfg.airports.map(ap => `<option value="${ap}" ${a===ap?"selected":""}>${ap}</option>`).join("") + `<option value="_custom" ${a==="_custom"?"selected":""}>Otro...</option>`;
+  const cfg = CATS[activeCat], m = cfg.models[formState.modelIdx], mats = m.mats;
+  const aopts = a => cfg.airports.map(ap=>`<option value="${ap}" ${a===ap?"selected":""}>${ap}</option>`).join("")+`<option value="_custom" ${a==="_custom"?"selected":""}>Otro...</option>`;
 
   let html = `
     <label class="lbl">Fecha</label>
     <input type="date" class="inp" value="${formState.fecha}" onchange="formState.fecha=this.value">
-
     <label class="lbl">Aeronave</label>
-    <div class="chips">
-      ${cfg.models.map((mod,i) => `<button class="chip ${formState.modelIdx===i?'on':''}" style="--cat-color:${cfg.color}" onclick="setModel(${i})">${mod.tipo} ${mod.modelo}</button>`).join("")}
-    </div>`;
+    <div class="chips">${cfg.models.map((mod,i)=>`<button class="chip ${formState.modelIdx===i?'on':''}" style="--cat-color:${cfg.color}" onclick="window._setModel(${i})">${mod.tipo} ${mod.modelo}</button>`).join("")}</div>`;
 
-  if(mats.length > 1) {
-    html += `<label class="lbl">Matrícula</label><div class="chips">
-      ${mats.map((mt,i) => `<button class="chip ${formState.matIdx===i?'on':''}" style="--cat-color:${cfg.color}" onclick="formState.matIdx=${i};renderForm()">${mt}</button>`).join("")}
-    </div>`;
-  } else {
-    html += `<p class="mat-info">Matrícula: ${mats[0]}</p>`;
-  }
+  if(mats.length>1) html += `<label class="lbl">Matrícula</label><div class="chips">${mats.map((mt,i)=>`<button class="chip ${formState.matIdx===i?'on':''}" style="--cat-color:${cfg.color}" onclick="formState.matIdx=${i};renderForm()">${mt}</button>`).join("")}</div>`;
+  else html += `<p class="mat-info">Matrícula: ${mats[0]}</p>`;
 
-  html += `<div class="row2"><div>
-    <label class="lbl">${cfg.labels.desde}</label>
-    <select class="inp" onchange="formState.desde=this.value;renderForm()">${airportOpts(formState.desde)}</select>
-    ${formState.desde==="_custom" ? `<input class="inp" style="margin-top:4px" placeholder="ICAO" value="${formState.customDesde}" oninput="formState.customDesde=this.value">` : ""}
-  </div><div>
-    <label class="lbl">${cfg.labels.hacia}</label>
-    <select class="inp" onchange="formState.hacia=this.value;renderForm()">${airportOpts(formState.hacia)}</select>
-    ${formState.hacia==="_custom" ? `<input class="inp" style="margin-top:4px" placeholder="ICAO" value="${formState.customHacia}" oninput="formState.customHacia=this.value">` : ""}
-  </div></div>
+  html += `<div class="row2">
+    <div><label class="lbl">${cfg.labels.desde}</label>
+    <select class="inp" onchange="formState.desde=this.value;renderForm()">${aopts(formState.desde)}</select>
+    ${formState.desde==="_custom"?`<input class="inp" style="margin-top:4px" placeholder="ICAO" value="${formState.customDesde}" oninput="formState.customDesde=this.value">`:""}
+    </div>
+    <div><label class="lbl">${cfg.labels.hacia}</label>
+    <select class="inp" onchange="formState.hacia=this.value;renderForm()">${aopts(formState.hacia)}</select>
+    ${formState.hacia==="_custom"?`<input class="inp" style="margin-top:4px" placeholder="ICAO" value="${formState.customHacia}" oninput="formState.customHacia=this.value">`:""}
+    </div></div>
+    <label class="lbl">Tiempo de Vuelo (hrs)</label>
+    <input type="number" step="0.1" min="0" inputmode="decimal" class="inp inp-big" value="${formState.tiempo}" oninput="formState.tiempo=this.value" placeholder="ej: 1.5">`;
 
-  <label class="lbl">Tiempo de Vuelo (hrs)</label>
-  <input type="number" step="0.1" min="0" inputmode="decimal" class="inp inp-big" value="${formState.tiempo}" oninput="formState.tiempo=this.value" placeholder="ej: 1.5">`;
-
-  if(cfg.hasIFR) {
-    html += `<button class="chip full ${formState.isIFR?'ifr on':''}" onclick="formState.isIFR=!formState.isIFR;renderForm()">${formState.isIFR ? "✓ Vuelo IFR" : "Marcar como IFR"}</button>`;
-  }
+  if(cfg.hasIFR) html += `<button class="chip full ${formState.isIFR?'ifr on':''}" onclick="formState.isIFR=!formState.isIFR;renderForm()">${formState.isIFR?"✓ Vuelo IFR":"Marcar como IFR"}</button>`;
 
   html += `<label class="lbl">${cfg.labels.notas}</label>
-  <input class="inp" placeholder="Opcional" value="${formState.notas}" oninput="formState.notas=this.value">
-  
-  <button class="big-btn" style="margin-top:16px;background:${cfg.color}" onclick="submitForm()" ${!formState.tiempo?"disabled":""}>${editingId ? "ACTUALIZAR" : "GUARDAR VUELO"}</button>`;
+    <input class="inp" placeholder="Opcional" value="${formState.notas}" oninput="formState.notas=this.value">
+    <button class="big-btn" style="margin-top:16px;background:${cfg.color}" onclick="window._submitForm()" ${!formState.tiempo?"disabled":""}>${editingId?"ACTUALIZAR":"GUARDAR VUELO"}</button>`;
 
   document.getElementById("formContent").innerHTML = html;
 }
 
-function setModel(i) {
-  formState.modelIdx = i;
-  formState.matIdx = 0;
-  renderForm();
-}
+window._setModel = i => { formState.modelIdx=i; formState.matIdx=0; renderForm(); };
+window.renderForm = renderForm;
 
-function submitForm() {
+window._submitForm = async function() {
   const t = parseFloat(formState.tiempo);
-  if(!t || t <= 0) return;
+  if(!t||t<=0) return;
   const cfg = CATS[activeCat], m = cfg.models[formState.modelIdx];
   const entry = {
-    category: activeCat,
-    tipo: m.tipo,
-    modelo: m.modelo,
-    matricula: m.mats[formState.matIdx] || m.mats[0] || "",
+    category: activeCat, tipo: m.tipo, modelo: m.modelo,
+    matricula: m.mats[formState.matIdx]||m.mats[0]||"",
     fecha: formState.fecha,
-    desde: formState.desde === "_custom" ? formState.customDesde.toUpperCase() : formState.desde,
-    hacia: formState.hacia === "_custom" ? formState.customHacia.toUpperCase() : formState.hacia,
-    tiempo: t,
-    notas: formState.notas,
-    isIFR: formState.isIFR
+    desde: formState.desde==="_custom"?formState.customDesde.toUpperCase():formState.desde,
+    hacia: formState.hacia==="_custom"?formState.customHacia.toUpperCase():formState.hacia,
+    tiempo: t, notas: formState.notas, isIFR: formState.isIFR,
+    id: editingId || uid()
   };
-  if(editingId) {
-    entries = entries.map(e => e.id === editingId ? { ...entry, id: editingId } : e);
-  } else {
-    entry.id = uid();
-    entries.push(entry);
+  try {
+    await saveFlight(entry);
+    const wasEditing = editingId;
+    editingId = null;
+    closeForm();
+    toast(wasEditing?"Vuelo actualizado ✓":"Vuelo registrado ✓");
+  } catch(e) {
+    toast("Error al guardar", "#EF4444");
   }
-  save();
-  const wasEditing = editingId;
-  editingId = null;
-  showHome();
-  toast(wasEditing ? "Vuelo actualizado" : "Vuelo registrado ✓");
-}
+};
 
-function closeForm() {
-  editingId = null;
-  showHome();
-}
+window.closeForm = function() { editingId=null; showHome(); };
+window._editEntry = id => window.openForm(id);
 
-function editEntry(id) { openForm(id); }
-
-function confirmDel(id) {
+window._confirmDel = id => {
   document.getElementById("overlayContainer").innerHTML = `
     <div class="overlay" onclick="closeOverlay()">
       <div class="modal" onclick="event.stopPropagation()">
         <p>¿Eliminar este registro?</p>
         <div class="modal-btns">
           <button class="modal-btn" style="background:#1E293B" onclick="closeOverlay()">Cancelar</button>
-          <button class="modal-btn" style="background:#EF4444" onclick="delEntry('${id}')">Eliminar</button>
+          <button class="modal-btn" style="background:#EF4444" onclick="window._delEntry('${id}')">Eliminar</button>
         </div>
       </div>
     </div>`;
-}
+};
 
-function delEntry(id) {
-  entries = entries.filter(e => e.id !== id);
-  save(); closeOverlay(); showHome(); toast("Registro eliminado");
-}
+window._delEntry = async id => {
+  try {
+    await deleteFlight(id);
+    closeOverlay(); toast("Registro eliminado");
+  } catch(e) { toast("Error al eliminar","#EF4444"); }
+};
 
-function closeOverlay() { document.getElementById("overlayContainer").innerHTML = ""; }
+window.closeOverlay = () => document.getElementById("overlayContainer").innerHTML = "";
 
-// ─── SETTINGS ───────────────────────────────────────────────────
-function openSettings() {
-  let tempSets = JSON.parse(JSON.stringify(settings));
-  const render = () => {
-    let html = `<div class="overlay" onclick="closeOverlay()"><div class="settings-panel" onclick="event.stopPropagation()">
-      <div class="settings-head"><h3>Configuración</h3><button class="settings-close" onclick="closeOverlay()">✕</button></div>
-      <p class="settings-desc">Estos valores reflejan el estado al inicio del periodo actual. Los vuelos registrados se suman a partir de aquí.</p>`;
+// ─── SETTINGS ────────────────────────────────────────────────────
+window.openSettings = function() {
+  let tmp = JSON.parse(JSON.stringify(settings));
+  let html = `<div class="overlay" onclick="closeOverlay()"><div class="settings-panel" onclick="event.stopPropagation()">
+    <div class="settings-head"><h3>Configuración</h3><button class="settings-close" onclick="closeOverlay()">✕</button></div>
+    <p class="settings-desc">Horas previas al inicio del periodo actual.</p>`;
+  for(const [cat,cfg] of Object.entries(CATS)) {
+    const totals = computeTotals(cat);
+    html += `<div class="settings-cat" style="--c:${cfg.color}">
+      <h4 style="color:${cfg.color}">${cfg.icon} ${cat.toUpperCase()}</h4>
+      <div class="settings-grid">
+        <div><label class="lbl" style="font-size:10px;margin-top:0">Hrs Previas</label>
+        <input class="inp" style="font-size:13px" type="number" step="0.1" value="${tmp[cat].horasPrevias}" data-cat="${cat}" data-key="horasPrevias"></div>
+        ${cat==="Avion"?`<div><label class="lbl" style="font-size:10px;margin-top:0">Hrs Base IFR</label>
+        <input class="inp" style="font-size:13px" type="number" step="0.1" value="${tmp[cat].ifrBase||0}" data-cat="${cat}" data-key="ifrBase"></div>`:""}
+      </div>
+      <div class="settings-footer">
+        <span>Periodo: ${fh(totals.periodo)}h · Total: ${fh(totals.totales)}h</span>
+        <button class="small-btn" style="color:#F59E0B;font-size:10px" onclick="window._resetPeriod('${cat}')">Renovar Periodo</button>
+      </div>
+    </div>`;
+  }
+  html += `<button class="big-btn" style="background:#3B82F6;font-size:14px;margin-top:4px" onclick="window._saveSettings()">GUARDAR</button></div></div>`;
+  document.getElementById("overlayContainer").innerHTML = html;
 
-    for(const [cat, cfg] of Object.entries(CATS)) {
-      const totals = computeTotals(cat);
-      html += `<div class="settings-cat" style="--c:${cfg.color}">
-        <h4 style="color:${cfg.color}">${cfg.icon} ${cat.toUpperCase()}</h4>
-        <div class="settings-grid">
-          <div><label class="lbl" style="font-size:10px;margin-top:0">Hrs Previas (vida)</label>
-            <input class="inp" style="font-size:13px" type="number" step="0.1" value="${tempSets[cat].horasPrevias}" oninput="this.dataset.v=this.value" data-cat="${cat}" data-key="horasPrevias"></div>
-          <div><label class="lbl" style="font-size:10px;margin-top:0">Hrs Base Periodo</label>
-            <input class="inp" style="font-size:13px" type="number" step="0.1" value="${tempSets[cat].periodoBase}" oninput="this.dataset.v=this.value" data-cat="${cat}" data-key="periodoBase"></div>
-          ${cat==="Avion" ? `<div><label class="lbl" style="font-size:10px;margin-top:0">Hrs Base IFR</label>
-            <input class="inp" style="font-size:13px" type="number" step="0.1" value="${tempSets[cat].ifrBase||0}" oninput="this.dataset.v=this.value" data-cat="${cat}" data-key="ifrBase"></div>` : ""}
-        </div>
-        <div class="settings-footer">
-          <span>Periodo: ${fh(totals.periodo)}h · Total: ${fh(totals.totales)}h</span>
-          <button class="small-btn" style="color:#F59E0B;font-size:10px" onclick="resetPeriod('${cat}')">Renovar Periodo</button>
-        </div>
-      </div>`;
-    }
-
-    html += `<button class="big-btn" style="background:#3B82F6;font-size:14px" onclick="saveSettings()">GUARDAR CONFIGURACIÓN</button>
-    </div></div>`;
-    document.getElementById("overlayContainer").innerHTML = html;
-  };
-
-  window.saveSettings = () => {
+  window._saveSettings = () => {
     document.querySelectorAll(".settings-panel input[data-cat]").forEach(inp => {
-      const cat = inp.dataset.cat, key = inp.dataset.key;
-      tempSets[cat][key] = parseFloat(inp.value) || 0;
+      tmp[inp.dataset.cat][inp.dataset.key] = parseFloat(inp.value)||0;
     });
-    settings = tempSets;
-    saveSets(); closeOverlay(); showHome(); toast("Configuración guardada");
+    settings = tmp; saveSettings_(); closeOverlay(); showHome(); toast("Configuración guardada");
   };
 
-  window.resetPeriod = (cat) => {
-    if(!confirm(`¿Renovar periodo de ${cat}? El contador de periodo se reseteará pero los vuelos se mantienen.`)) return;
+  window._resetPeriod = async cat => {
+    if(!confirm(`¿Renovar periodo de ${cat}?`)) return;
     const today = new Date().toISOString().split("T")[0];
-    entries.push({
-      id: 'ren_' + cat + '_' + today,
-      category: cat,
-      tipo:'', modelo:'', matricula:'',
-      fecha: today,
-      desde:'', hacia:'',
-      tiempo: 0, notas:'', isIFR: false,
-      renewal: true
-    });
-    save(); closeOverlay(); showHome(); toast(`Periodo ${cat} renovado`);
+    const renewal = { id:'ren_'+cat+'_'+today, category:cat, tipo:'', modelo:'', matricula:'',
+      fecha:today, desde:'', hacia:'', tiempo:0, notas:'', isIFR:false, renewal:true };
+    await saveFlight(renewal);
+    closeOverlay(); toast(`Periodo ${cat} renovado`);
   };
+};
 
-  render();
-}
-
-// ─── EXPORT ─────────────────────────────────────────────────────
+// ─── EXPORT ──────────────────────────────────────────────────────
 function buildSheetData(cat) {
-  const cfg = CATS[cat];
-  const sorted = catEntries(cat).filter(e => !e.renewal);
-  const base = settings[cat];
-  const hasIFR = cfg.hasIFR;
-
-  const rows = [];
-  const catNames = { Planeador: "Bitacora de Vuelo Planeador", Helicoptero: "BITACORA DE VUELO HELICOPTERO", Avion: "BITACORA DE VUELO MONOMOTOR" };
-  rows.push(["", catNames[cat]]);
-  rows.push(["", "Tomas Lyon Valdivieso"]);
-  rows.push(["", "15.382.016-3"]);
-  rows.push(["", ""]);
-  rows.push(["", ""]);
-  rows.push(["", "Horas Previas", base.horasPrevias]);
-  rows.push([]);
-
-  const headers = ["", "Fecha", "Tipo", "Modelo", "Matricula", cfg.labels.desde, cfg.labels.hacia, "Tiempo", "Periodo", "Totales", cfg.labels.notas];
-  if(hasIFR) headers.push("Hrs IFR");
-  rows.push(headers);
-
-  const allSorted = catEntries(cat);
-  let periodo = 0, totales = base.horasPrevias || 0, ifr = base.ifrBase || 0;
-  for(const e of allSorted) {
-    if(e.renewal) {
-      rows.push(["", "", "", "", "", "", "", "", "RENOVACIÓN", "", ""]);
-      periodo = 0;
-      continue;
-    }
-    totales += e.tiempo || 0;
-    periodo += e.tiempo || 0;
-    if(e.isIFR) ifr += e.tiempo || 0;
-
-    const row = ["", e.fecha, e.tipo, e.modelo, e.matricula, e.desde, e.hacia, e.tiempo, periodo, totales, e.notas || ""];
-    if(hasIFR) row.push(e.isIFR ? ifr : "");
-    rows.push(row);
+  const cfg=CATS[cat], base=settings[cat], hasIFR=cfg.hasIFR;
+  const rows=[["",cat==="Planeador"?"Bitacora Planeador":cat==="Helicoptero"?"Bitacora Helicoptero":"Bitacora Avion"],
+    ["","Tomas Lyon Valdivieso"],["","15.382.016-3"],["",""],["",""],
+    ["","Horas Previas",base.horasPrevias],[]];
+  const h=["","Fecha","Tipo","Modelo","Matricula",cfg.labels.desde,cfg.labels.hacia,"Tiempo","Periodo","Totales",cfg.labels.notas];
+  if(hasIFR) h.push("Hrs IFR");
+  rows.push(h);
+  let periodo=0,totales=base.horasPrevias||0,ifr=base.ifrBase||0;
+  for(const e of catEntries(cat)) {
+    if(e.renewal){rows.push(["","","","","","","","","RENOVACIÓN","",""]);periodo=0;continue;}
+    totales+=e.tiempo||0;periodo+=e.tiempo||0;if(e.isIFR)ifr+=e.tiempo||0;
+    const r=["",e.fecha,e.tipo,e.modelo,e.matricula,e.desde,e.hacia,e.tiempo,periodo,totales,e.notas||""];
+    if(hasIFR)r.push(e.isIFR?ifr:"");
+    rows.push(r);
   }
   return rows;
 }
 
-function exportExcel() {
-  const sorted = catEntries(activeCat);
-  if(sorted.length === 0) { toast("Sin datos para exportar"); return; }
-
-  const wb = XLSX.utils.book_new();
-  const rows = buildSheetData(activeCat);
-  const ws = XLSX.utils.aoa_to_sheet(rows);
-  ws['!cols'] = [{wch:2},{wch:12},{wch:12},{wch:12},{wch:10},{wch:10},{wch:14},{wch:8},{wch:8},{wch:10},{wch:18},{wch:8}];
-
-  for(let r = 8; r < rows.length; r++) {
-    const cellRef = XLSX.utils.encode_cell({r:r, c:1});
-    if(ws[cellRef] && rows[r][1] && typeof rows[r][1] === 'string' && rows[r][1].match(/^\d{4}-\d{2}-\d{2}$/)) {
-      ws[cellRef].t = 'd';
-    }
-  }
-
-  XLSX.utils.book_append_sheet(wb, ws, activeCat);
-  XLSX.writeFile(wb, `bitacora_${activeCat.toLowerCase()}_${new Date().toISOString().split("T")[0]}.xlsx`);
+window.exportExcel = function() {
+  if(!catEntries(activeCat).length){toast("Sin datos","#F59E0B");return;}
+  const wb=XLSX.utils.book_new(), ws=XLSX.utils.aoa_to_sheet(buildSheetData(activeCat));
+  ws['!cols']=[{wch:2},{wch:12},{wch:12},{wch:12},{wch:10},{wch:10},{wch:14},{wch:8},{wch:8},{wch:10},{wch:18},{wch:8}];
+  XLSX.utils.book_append_sheet(wb,ws,activeCat);
+  XLSX.writeFile(wb,`bitacora_${activeCat.toLowerCase()}_${new Date().toISOString().split("T")[0]}.xlsx`);
   toast("Excel descargado");
-}
+};
 
-function exportExcelAll() {
-  const wb = XLSX.utils.book_new();
-  let hasData = false;
-
-  for(const cat of ["Planeador", "Helicoptero", "Avion"]) {
-    const sorted = catEntries(cat);
-    if(sorted.length === 0) continue;
-    hasData = true;
-
-    const rows = buildSheetData(cat);
-    const ws = XLSX.utils.aoa_to_sheet(rows);
-    ws['!cols'] = [{wch:2},{wch:12},{wch:12},{wch:12},{wch:10},{wch:10},{wch:14},{wch:8},{wch:8},{wch:10},{wch:18},{wch:8}];
-
-    for(let r = 8; r < rows.length; r++) {
-      const cellRef = XLSX.utils.encode_cell({r:r, c:1});
-      if(ws[cellRef] && rows[r][1] && typeof rows[r][1] === 'string' && rows[r][1].match(/^\d{4}-\d{2}-\d{2}$/)) {
-        ws[cellRef].t = 'd';
-      }
-    }
-
-    XLSX.utils.book_append_sheet(wb, ws, cat);
+window.exportExcelAll = function() {
+  const wb=XLSX.utils.book_new(); let hasData=false;
+  for(const cat of ["Planeador","Helicoptero","Avion"]) {
+    if(!catEntries(cat).length) continue; hasData=true;
+    const ws=XLSX.utils.aoa_to_sheet(buildSheetData(cat));
+    ws['!cols']=[{wch:2},{wch:12},{wch:12},{wch:12},{wch:10},{wch:10},{wch:14},{wch:8},{wch:8},{wch:10},{wch:18},{wch:8}];
+    XLSX.utils.book_append_sheet(wb,ws,cat);
   }
-
-  if(!hasData) { toast("Sin datos para exportar"); return; }
-  XLSX.writeFile(wb, `bitacora_completa_${new Date().toISOString().split("T")[0]}.xlsx`);
+  if(!hasData){toast("Sin datos","#F59E0B");return;}
+  XLSX.writeFile(wb,`bitacora_completa_${new Date().toISOString().split("T")[0]}.xlsx`);
   toast("Excel completo descargado");
-}
+};
 
-function copyAll() {
-  const sorted = catEntries(activeCat);
-  if(sorted.length === 0) { toast("Sin datos"); return; }
-  let txt = `BITÁCORA ${activeCat.toUpperCase()}\n${"═".repeat(40)}\n`;
-  sorted.forEach(e => {
-    const t = getEntryTotals(activeCat, e.id);
-    txt += `${e.fecha} | ${e.tipo} ${e.modelo} ${e.matricula} | ${e.desde}→${e.hacia} | ${fh(e.tiempo)}h | Per:${fh(t.periodo)} Tot:${fh(t.totales)}${e.isIFR?" IFR":""}${e.notas?" | "+e.notas:""}\n`;
-  });
-  navigator.clipboard.writeText(txt).then(() => toast("Copiado al portapapeles"));
-}
+window.copyAll = function() {
+  const sorted=catEntries(activeCat); if(!sorted.length){toast("Sin datos","#F59E0B");return;}
+  let txt=`BITÁCORA ${activeCat.toUpperCase()}\n${"═".repeat(40)}\n`;
+  sorted.forEach(e=>{const t=getEntryTotals(activeCat,e.id);txt+=`${e.fecha}|${e.tipo} ${e.modelo} ${e.matricula}|${e.desde}→${e.hacia}|${fh(e.tiempo)}h|Per:${fh(t.periodo)} Tot:${fh(t.totales)}${e.isIFR?" IFR":""}${e.notas?" |"+e.notas:""}\n`;});
+  navigator.clipboard.writeText(txt).then(()=>toast("Copiado"));
+};
 
-// ─── SERVICE WORKER ─────────────────────────────────────────────
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("/Bitacora-Vuelo/sw.js")
-      .then(r => console.log("SW registrado:", r.scope))
-      .catch(e => console.error("SW error:", e));
-  });
+// ─── SERVICE WORKER ───────────────────────────────────────────────
+if("serviceWorker" in navigator) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("/Bitacora-Vuelo/sw.js"));
 }
-
-// ─── INIT ───────────────────────────────────────────────────────
-showHome();
 </script>
 </body>
 </html>

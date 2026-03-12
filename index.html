@@ -8,8 +8,10 @@
 <meta name="apple-mobile-web-app-title" content="Bitácora">
 <meta name="theme-color" content="#0B1120">
 <meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon.svg">
 <title>Bitácora de Vuelo</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✈️</text></svg>">
+<link rel="icon" href="icons/icon.svg">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
@@ -273,7 +275,6 @@ const fd = d => { if(!d) return ""; const dt=new Date(d+"T12:00:00"); return dt.
 function catEntries(cat) {
   return entries.filter(e => e.category === cat).sort((a,b) => {
     if(a.fecha !== b.fecha) return a.fecha.localeCompare(b.fecha);
-    // Renewal rows sort BEFORE normal entries on same date
     if(a.renewal && !b.renewal) return -1;
     if(!a.renewal && b.renewal) return 1;
     return 0;
@@ -381,24 +382,6 @@ function showLog() {
     ? '<p class="empty">Sin registros aún</p>'
     : buildTable(reversed, activeCat);
   renderNav();
-}
-
-function cardHTML(e, compact) {
-  const cfg = CATS[activeCat], t = getEntryTotals(activeCat, e.id);
-  const ifr = e.isIFR ? `<span class="card-ifr">IFR</span>` : "";
-  const totalsDiv = compact ? "" : `<div class="card-totals">Per: <span style="color:${cfg.color}">${fh(t.periodo)}</span><br>Tot: <span style="color:#94A3B8">${fh(t.totales)}</span></div>`;
-  const actions = compact ? "" : `<div class="card-actions"><button class="small-btn" onclick="editEntry('${e.id}')">Editar</button><button class="small-btn" style="color:#EF4444" onclick="confirmDel('${e.id}')">Eliminar</button></div>`;
-  return `<div class="card" style="--cat-color:${cfg.color}">
-    <div class="card-top">
-      <div style="flex:1">
-        <div style="display:flex;align-items:center;gap:8px">
-          <span class="card-time">${fh(e.tiempo)}h</span><span class="card-date">${fd(e.fecha)}</span>${ifr}
-        </div>
-        <p class="card-aircraft">${e.tipo} ${e.modelo} · ${e.matricula}</p>
-        <p class="card-route">${e.desde} → ${e.hacia}${e.notas ? " · "+e.notas : ""}</p>
-      </div>${totalsDiv}
-    </div>${actions}
-  </div>`;
 }
 
 function buildTable(flights, cat) {
@@ -661,7 +644,6 @@ function buildSheetData(cat) {
   const base = settings[cat];
   const hasIFR = cfg.hasIFR;
 
-  // Header rows matching original Excel format
   const rows = [];
   const catNames = { Planeador: "Bitacora de Vuelo Planeador", Helicoptero: "BITACORA DE VUELO HELICOPTERO", Avion: "BITACORA DE VUELO MONOMOTOR" };
   rows.push(["", catNames[cat]]);
@@ -672,17 +654,14 @@ function buildSheetData(cat) {
   rows.push(["", "Horas Previas", base.horasPrevias]);
   rows.push([]);
 
-  // Column headers
   const headers = ["", "Fecha", "Tipo", "Modelo", "Matricula", cfg.labels.desde, cfg.labels.hacia, "Tiempo", "Periodo", "Totales", cfg.labels.notas];
   if(hasIFR) headers.push("Hrs IFR");
   rows.push(headers);
 
-  // Compute running totals and add data rows
   const allSorted = catEntries(cat);
   let periodo = 0, totales = base.horasPrevias || 0, ifr = base.ifrBase || 0;
   for(const e of allSorted) {
     if(e.renewal) {
-      // Add renewal separator row
       rows.push(["", "", "", "", "", "", "", "", "RENOVACIÓN", "", ""]);
       periodo = 0;
       continue;
@@ -705,11 +684,8 @@ function exportExcel() {
   const wb = XLSX.utils.book_new();
   const rows = buildSheetData(activeCat);
   const ws = XLSX.utils.aoa_to_sheet(rows);
-
-  // Column widths
   ws['!cols'] = [{wch:2},{wch:12},{wch:12},{wch:12},{wch:10},{wch:10},{wch:14},{wch:8},{wch:8},{wch:10},{wch:18},{wch:8}];
 
-  // Format date cells as dates
   for(let r = 8; r < rows.length; r++) {
     const cellRef = XLSX.utils.encode_cell({r:r, c:1});
     if(ws[cellRef] && rows[r][1] && typeof rows[r][1] === 'string' && rows[r][1].match(/^\d{4}-\d{2}-\d{2}$/)) {
@@ -759,6 +735,15 @@ function copyAll() {
     txt += `${e.fecha} | ${e.tipo} ${e.modelo} ${e.matricula} | ${e.desde}→${e.hacia} | ${fh(e.tiempo)}h | Per:${fh(t.periodo)} Tot:${fh(t.totales)}${e.isIFR?" IFR":""}${e.notas?" | "+e.notas:""}\n`;
   });
   navigator.clipboard.writeText(txt).then(() => toast("Copiado al portapapeles"));
+}
+
+// ─── SERVICE WORKER ─────────────────────────────────────────────
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/Bitacora-Vuelo/sw.js")
+      .then(r => console.log("SW registrado:", r.scope))
+      .catch(e => console.error("SW error:", e));
+  });
 }
 
 // ─── INIT ───────────────────────────────────────────────────────
